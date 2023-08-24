@@ -1,0 +1,635 @@
+//secBlock
+
+{/* <div className="flex items-center justify-center scale-50"> */}
+  {/* <Image
+    width={50}
+    height={50}
+    className={
+      "mb-3 bg-cover bg-center " +
+      getBorder2("image", themeStyle.image.border)
+    }
+    alt=""
+    onClick={() => setImage(images[0])}
+    src={images[0]}
+  />
+  {images[1] ? (
+    <Image
+      width={50}
+      height={50}
+      className={
+        "mb-3 bg-cover bg-center " +
+        getBorder2("image", themeStyle.image.border)
+      }
+      alt=""
+      onClick={() => setImage(images[1])}
+      src={images[1]}
+    />
+  ) : (
+    <></>
+  )}
+  {images[2] ? (
+    <div className="flex items-center justify-center">
+      <h5 className="absolute mb-0 z-10 text-white">
+        {images.length > 3 ? "+" + (images.length - 3) : undefined}
+      </h5>
+      <Image
+        width={50}
+        height={50}
+        className={
+          "mb-3 bg-cover bg-center " +
+          getBorder2("image", themeStyle.image.border) +
+          " " +
+          (images.length > 3 ? "!brightness-50" : "")
+        }
+        alt=""
+        onClick={() => setImage(images[2])}
+        src={images[2]}
+      />
+    </div>
+  ) : (
+    <></>
+  )} */}
+  {/* </div> */}
+
+  {/* <Button
+    className={
+      "!p-2 m-1 " +
+      getBorder(
+        "button",
+        "secondary",
+        themeStyle.button.secondary.border
+      )
+    }
+    onClick={() => {
+      images[0] === image
+        ? setImage(images[images.length - 1])
+        : setImage(images[images.indexOf(image) - 1]);
+    }}
+  >
+    {Icon("bs", "BsChevronUp", "16px")}
+  </Button>
+  <Button
+    className={
+      "!p-2 m-1 " +
+      getBorder(
+        "button",
+        "secondary",
+        themeStyle.button.secondary.border
+      )
+    }
+    onClick={() => {
+      images[images.length - 1] === image
+        ? setImage(images[0])
+        : setImage(images[images.indexOf(image) + 1]);
+    }}
+  >
+    {Icon("bs", "BsChevronDown", "16px")}
+  </Button> */}
+
+<Card className="bg-transparent border-0">
+              <div className="flex">
+                {/* <div className="mx-3 flex flex-col">
+              <Button className="!p-3 !rounded-tl-3xl !rounded-tr-md !rounded-b-none">
+                {Icon("bs", "BsChevronUp", "16px")}
+              </Button>
+              <Button className="!p-3 !rounded-bl-md !rounded-br-3xl !rounded-t-none">
+                {Icon("bs", "BsChevronDown", "16px")}
+              </Button>
+            </div> */}
+                <Card.Img
+                  variant="top"
+                  className={
+                    "!w-[40%] hover:skew-y-3 !object-cover " +
+                    getBorder2("image", themeStyle.image.border)
+                  }
+                  src={image}
+                />
+                <Card.Body className="w-[100%] flex items-center justify-center text-white">
+                  <div>
+                    <Card.Title>
+                      <h1>{item.name}</h1>
+                    </Card.Title>
+                    <div className="flex">
+                      {generateScore(item.score)} {/**/}
+                      <h6 className="mb-0 mx-2">{item.score}</h6>
+                      {/* <div
+                        onClick={() => {
+                          star === 0
+                            ? setStar(0.5)
+                            : star === 0.5
+                            ? setStar(1)
+                            : setStar(0);
+                        }}
+                      >
+                        {star === 0.5
+                          ? Icon("fa", "FaStarHalfAlt")
+                          : star >= 1
+                          ? Icon("fa", "FaStar")
+                          : Icon("fa", "FaRegStar")}
+                      </div>
+                      <div
+                        onClick={() => {
+                          star === 1
+                            ? setStar(1.5)
+                            : star === 1.5
+                            ? setStar(2)
+                            : setStar(1);
+                        }}
+                      >
+                        {star === 1.5
+                          ? Icon("fa", "FaStarHalfAlt")
+                          : star >= 2
+                          ? Icon("fa", "FaStar")
+                          : Icon("fa", "FaRegStar")}
+                      </div>
+                      <div
+                        onClick={() => {
+                          star === 2
+                            ? setStar(2.5)
+                            : star === 2.5
+                            ? setStar(3)
+                            : setStar(2);
+                        }}
+                      >
+                        {star === 2.5
+                          ? Icon("fa", "FaStarHalfAlt")
+                          : star >= 3
+                          ? Icon("fa", "FaStar")
+                          : Icon("fa", "FaRegStar")}
+                      </div>
+                      <div
+                        onClick={() => {
+                          star === 3
+                            ? setStar(3.5)
+                            : star === 3.5
+                            ? setStar(4)
+                            : setStar(3);
+                        }}
+                      >
+                        {star === 3.5
+                          ? Icon("fa", "FaStarHalfAlt")
+                          : star >= 4
+                          ? Icon("fa", "FaStar")
+                          : Icon("fa", "FaRegStar")}
+                      </div>
+                      <div
+                        onClick={() => {
+                          star === 4
+                            ? setStar(4.5)
+                            : star === 4.5
+                            ? setStar(5)
+                            : setStar(4);
+                        }}
+                      >
+                        {star === 4.5
+                          ? Icon("fa", "FaStarHalfAlt")
+                          : star >= 5
+                          ? Icon("fa", "FaStar")
+                          : Icon("fa", "FaRegStar")}
+                      </div> 
+                      <h6 className="mb-0 mx-2">{star}</h6>*/}
+                      {/* </div>
+                    <div className="flex"> */}
+                      {Icon("fa", "FaRegCommentDots")}
+                      <h6 className="mb-0 mx-2">{item.comments.length}</h6>
+                    </div>
+                    <div className="flex">
+                      {item.sizes.map((e, i) => {
+                        return (
+                          <Button
+                            key={i}
+                            variant="outline-light"
+                            className={
+                              "m-2 uppercase " +
+                              getBorder(
+                                "button",
+                                "main",
+                                themeStyle.button.main.border
+                              ) +
+                              " " +
+                              (size === e ? "!bg-lime-400" : "")
+                            }
+                            onClick={() => {
+                              setSize(e);
+                            }}
+                          >
+                            {e}
+                          </Button>
+                        );
+                      })}
+                      {/* <Button
+                        variant="outline-light"
+                        className={
+                          "!rounded-xl m-2 !shadow-[inset_0_3px_6px_-1px_rgba(0,0,0,0.3)] !border-t-0 !border-r-0 " +
+                          (size === "s" ? "!bg-lime-400" : "")
+                        }
+                        onClick={() => {
+                          size === "s" ? setSize("") : setSize("s");
+                        }}
+                      >
+                        S
+                      </Button>
+                      <Button
+                        variant="outline-light"
+                        className={
+                          "!rounded-xl m-2 !shadow-[inset_0_3px_6px_-1px_rgba(0,0,0,0.3)] !border-t-0 !border-r-0 " +
+                          (size === "m" ? "!bg-lime-400" : "")
+                        }
+                        onClick={() => {
+                          size === "m" ? setSize("") : setSize("m");
+                        }}
+                      >
+                        M
+                      </Button>
+                      <Button
+                        ref={colorTarget}
+                        variant="outline-light"
+                        className={
+                          "!rounded-xl m-2 !shadow-[inset_0_3px_6px_-1px_rgba(0,0,0,0.3)] !border-t-0 !border-r-0 " +
+                          // +
+                          //   colorTarget.current ===
+                          // this
+                          //   ? "bg-green-500"
+                          //   : ""
+                          (size === "l" ? "!bg-lime-400" : "")
+                        }
+                        onClick={() => {
+                          size === "l" ? setSize("") : setSize("l");
+                        }}
+                      >
+                        L
+                      </Button>
+                      <Button
+                        variant="outline-light"
+                        className={
+                          "!rounded-xl m-2 !shadow-[inset_0_3px_6px_-1px_rgba(0,0,0,0.3)] !border-t-0 !border-r-0 " +
+                          (size === "xl" ? "!bg-lime-400" : "")
+                        }
+                        onClick={() => {
+                          size === "xl" ? setSize("") : setSize("xl");
+                        }}
+                      >
+                        XL
+                      </Button> */}
+                    </div>
+                    <div className="flex">
+                      {item.colors.map((e, i) => {
+                        return (
+                          <div
+                            key={i}
+                            className={
+                              "w-[30px] h-[30px] bg-gradient-to-t from-" +
+                              (e === "white"
+                                ? "slate-100 to-stone-600 "
+                                : e === "black"
+                                ? "slate-900 to-stone-600 "
+                                : e.toString() +
+                                  "-400 to-" +
+                                  e.toString() +
+                                  "-600 ") +
+                              "m-2 active:brightness-110 " +
+                              getBorder(
+                                "button",
+                                "secondary",
+                                themeStyle.button.secondary.border
+                              ) +
+                              " " +
+                              (color === e
+                                ? "outline outline-2 outline-offset-[3px] outline-" +
+                                  e +
+                                  "-200"
+                                : "")
+                            }
+                            onClick={() => {
+                              setColor(e);
+                            }}
+                          ></div>
+                        );
+                      })}
+                    </div>
+                    <Card.Text>{item.description}</Card.Text>
+                    <div className="flex justify-end">
+                      <div
+                        className={
+                          "flex items-center my-2 p-1 border border-white " +
+                          getBorder(
+                            "button",
+                            "main",
+                            themeStyle.button.main.border
+                          )
+                        }
+                      >
+                        <Card.Text className="mb-0">
+                          <h2 className="mb-0 mr-3">
+                            {monetaryFormat(item.price)}
+                          </h2>
+                        </Card.Text>
+                        <Button
+                          variant="dark"
+                          className={
+                            "p-2 " +
+                            getBorder(
+                              "button",
+                              "main",
+                              themeStyle.button.main.border
+                            )
+                          }
+                          onClick={() => {
+                            updateCart();
+                          }}
+                        >
+                          {Icon("ri", "RiShoppingCart2Line", "24px")}
+                        </Button>
+                      </div>
+                    </div>
+                    <Row className="flex items-center justify-center">
+                      <Col>
+                        <SecBlock
+                          type="item"
+                          iconType="tb"
+                          icon="TbDiscount2"
+                          title="30% discount"
+                          paragraph="wednesday & thursday"
+                          layout=""
+                        ></SecBlock>
+                        <SecBlock
+                          type="item"
+                          iconType="fi"
+                          icon="FiPackage"
+                          title="free delivery"
+                          paragraph="at weekends - just for local"
+                          layout=""
+                        ></SecBlock>
+                      </Col>
+                      <Col className="m-0 md:ml-4">
+                        <SecBlock
+                          type="item"
+                          iconType="md"
+                          icon="MdNavigation"
+                          title="5% discount buying online"
+                          paragraph=""
+                          layout=""
+                        ></SecBlock>
+                        {/* <SecBlock
+                          type="item"
+                          iconType="fa"
+                          icon="FaLandmark"
+                          title=""
+                          paragraph=""
+                          layout=""
+                        ></SecBlock> */}
+                      </Col>
+                    </Row>
+                  </div>
+
+                  <div className="absolute top-[10px] left-[10px]">
+                    <Badge
+                      bg="danger"
+                      className="!rounded-tl-xl !rounded-tr-sm !rounded-bl-sm !rounded-br-xl"
+                    >
+                      New
+                    </Badge>
+                  </div>
+                </Card.Body>
+              </div>
+            </Card>
+
+            <Container className="my-4">
+              <h2 className="border-l-4 pl-2 capitalize">
+                {translations("description", language)}
+              </h2>
+              <div className="flex">
+                <h6 className="mr-2">
+                  Users comments <Badge bg="dark">{item.comments.length}</Badge>
+                </h6>
+                <h6>
+                  Questions & Answers <Badge bg="dark">{item.faqs.length}</Badge>
+                </h6>
+              </div>
+              <Row>
+                <Col>
+                  <div
+                    className={
+                      "p-[.75rem] bg-lime-500 " +
+                      getBorder2(
+                        "secondaryComponent",
+                        themeStyle.secondaryComponent.border
+                      )
+                    }
+                  >
+                    <Table variant="dark" className="mb-0 !bg-lime-500">
+                      <thead>
+                        <tr className="!bg-transparent">
+                          <th className="!bg-transparent">number</th>
+                          <th className="!bg-transparent">features</th>
+                          <th className="!bg-transparent"></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {item.features.map((e, i) => {
+                          {
+                            return i === item.features.length - 1 ? (
+                              <tr>
+                                <td className="!bg-transparent border-0">a</td>
+                                <td className="!bg-transparent border-0">
+                                  {e.split("|")[0]}
+                                </td>
+                                <td className="!bg-transparent border-0">c</td>
+                              </tr>
+                            ) : (
+                              <tr>
+                                <td className="!bg-transparent">c</td>
+                                <td className="!bg-transparent">
+                                  {e.split("|")[0]}
+                                </td>
+                                <td className="!bg-transparent">c</td>
+                              </tr>
+                            );
+                          }
+                        })}
+                      </tbody>
+                    </Table>
+                  </div>
+                </Col>
+                <Col>
+                  <iframe
+                    width="100%"
+                    height="345"
+                    src="https://player.vimeo.com/video/484331149"
+                  />
+                </Col>
+              </Row>
+              <Row className="mt-3">
+                <Col>
+                  <h3 className="border-l-4 pl-2 !my-3 capitalize">
+                    {translations("comments", language)}
+                  </h3>
+                  <div
+                    className={
+                      "flex flex-col items-end p-[.75rem] bg-slate-100 " +
+                      getBorder2(
+                        "secondaryComponent",
+                        themeStyle.secondaryComponent.border
+                      )
+                    }
+                  >
+                    <Table className="mb-0 !bg-slate-100">
+                      <thead>
+                        <tr className="!bg-transparent">
+                          <th className="!bg-transparent">
+                            {translations("user", language)}
+                          </th>
+                          <th className="!bg-transparent">
+                            {translations("comment", language)}
+                          </th>
+                          <th className="!bg-transparent">
+                            {translations("date", language)}
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {item.comments
+                          ? item.comments.map((e, i) => {
+                              return (
+                                <tr key={i}>
+                                  <td className="!bg-transparent">{e.user}</td>
+                                  <td className="!bg-transparent">{e.comment}</td>
+                                  <td className="!bg-transparent">{e.date}</td>
+                                </tr>
+                              );
+                            })
+                          : undefined}
+                      </tbody>
+                    </Table>
+                    {showCommentForm ? (
+                      <>
+                        <Form className="mt-3 flex items-center !w-full">
+                          <Form.Group
+                            className="!w-full mr-3"
+                            controlId="exampleForm.ControlInput1"
+                          >
+                            <Form.Control
+                              type="text"
+                              placeholder="your comment"
+                              value={comment}
+                              onChange={(e: any) => setComment(e.target.value)}
+                            />
+                          </Form.Group>
+                          <Button
+                            className="!rounded-full !p-3"
+                            onClick={() => updateComments()}
+                          >
+                            {Icon("fa", "FaComment")}
+                          </Button>
+                        </Form>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                    <Button
+                      className={
+                        "mt-3 " +
+                        getBorder("button", "main", themeStyle.button.main.border)
+                      }
+                      onClick={() => {
+                        verifyLogged();
+                      }}
+                    >
+                      {translations("addComment", language)}
+                    </Button>
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+
+farmacia
+https://images.unsplash.com/photo-1618120508902-c8d05e7985ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80
+https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+
+https://images.unsplash.com/photo-1566812303232-cb17247721ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=667&q=80
+https://images.unsplash.com/photo-1566814534947-46a09bcbb88c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=717&q=80
+https://images.unsplash.com/photo-1566958769312-82cef41d19ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=578&q=80
+
+https://images.unsplash.com/photo-1630094539386-280edfb5d46a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+https://images.unsplash.com/photo-1630094539416-5e17c6191be5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+
+https://images.unsplash.com/photo-1550572017-4fcdbb59cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=739&q=80
+https://images.unsplash.com/photo-1615486511262-c7b5c7f42b14?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80
+https://images.unsplash.com/photo-1615486511473-4e83867c9516?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80
+https://images.unsplash.com/photo-1615486511484-92e172cc4fe0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80
+https://images.unsplash.com/photo-1612448071097-a6b55cf216c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=386&q=80
+https://images.unsplash.com/photo-1615486511369-31ff08672204?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80
+https://images.unsplash.com/photo-1614859324967-bdf471b40aa7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+https://images.unsplash.com/photo-1614859385574-88ef5ad69ee9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80
+https://images.unsplash.com/photo-1630094539465-9838f369f766?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+https://images.unsplash.com/photo-1593491205049-7f032d28cf5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+https://images.unsplash.com/photo-1549504537-57b91460ba7c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1032&q=80
+https://images.unsplash.com/photo-1596177582967-a5d143a41237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80
+
+https://images.unsplash.com/photo-1616526628254-3237a81c18ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+https://images.unsplash.com/photo-1616526629705-981c263b68bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80
+https://images.unsplash.com/photo-1616526628217-c21fd2eef624?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=871&q=80
+https://images.unsplash.com/photo-1616526628220-f7b03df408b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+https://images.unsplash.com/photo-1616526629549-353331fea648?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+https://images.unsplash.com/photo-1615486510940-4e96763c7f6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+
+dogo
+
+https://images.unsplash.com/photo-1604544203292-0daa7f847478?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=327&q=80
+https://images.unsplash.com/photo-1597843786271-1027c561c6ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+https://images.unsplash.com/photo-1597843786411-a7fa8ad44a95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+https://images.unsplash.com/photo-1597843786186-826cc3489f56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80
+
+hostel
+
+https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=869&q=80
+https://images.unsplash.com/photo-1619810230359-b2c2f61c49cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+https://images.unsplash.com/photo-1629794226066-349748040fb7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+https://images.unsplash.com/photo-1561124928-eda0f74e3847?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=872&q=80
+https://images.unsplash.com/photo-1528113202358-a2bc37ca5b75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+
+santelmo
+
+https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80
+https://images.unsplash.com/photo-1567538096621-38d2284b23ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=872&q=80
+
+https://images.unsplash.com/photo-1503602642458-232111445657?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80
+https://images.unsplash.com/photo-1611486212355-d276af4581c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+https://images.unsplash.com/photo-1601366533287-5ee4c763ae4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=388&q=80
+https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80
+https://images.unsplash.com/photo-1592078615290-033ee584e267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80
+https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1518&q=80
+
+riolumpur
+
+https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=876&q=80
+https://images.unsplash.com/photo-1603360946369-dc9bb6258143?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=435&q=80
+https://images.unsplash.com/photo-1453824979084-c8fd42932378?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80
+https://images.unsplash.com/photo-1432139509613-5c4255815697?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=385&q=80
+https://images.unsplash.com/photo-1526318896980-cf78c088247c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80
+https://images.unsplash.com/photo-1617093727343-374698b1b08d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+https://images.unsplash.com/photo-1632660377567-aad5758ffa88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1031&q=80
+https://images.unsplash.com/photo-1481391032119-d89fee407e44?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=465&q=80
+
+nutri
+
+https://images.unsplash.com/photo-1611077543693-a0194a16b034?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1006&q=80
+https://images.unsplash.com/photo-1587996597484-04743eeb56b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80
+https://images.unsplash.com/photo-1617957854609-873e56de0d41?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80
+https://images.unsplash.com/photo-1617884157905-b66741c4a445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80
+https://images.unsplash.com/photo-1621054143165-33e0e77558d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80
+https://images.unsplash.com/photo-1619846227717-205b9dccac17?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80
+https://images.unsplash.com/photo-1621484488308-3fc11031f2b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80
+https://images.unsplash.com/photo-1618724980108-a4d3856fd8f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80
+https://images.unsplash.com/photo-1620882133512-5149956b1261?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80
+https://images.unsplash.com/photo-1619674072044-da7ecf3b17cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80
+https://images.unsplash.com/photo-1618897996318-5a901fa6ca71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80
+https://images.unsplash.com/photo-1619502735729-13b7525f13e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80
+https://images.unsplash.com/photo-1620278596990-fdf04885f5b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80
+https://images.unsplash.com/photo-1620706857370-e1b9770e8bb1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80
+
+edu
+
+https://images.unsplash.com/photo-1485081669829-bacb8c7bb1f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80
+https://images.unsplash.com/photo-1587691592099-24045742c181?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=873&q=80

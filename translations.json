@@ -1,0 +1,402 @@
+{
+  "blankSpace": {
+    "en": "",
+    "es": "",
+    "pt": ""
+  },
+  "home": {
+    "en": "home",
+    "es": "inicio",
+    "pt": "ínicio"
+  },
+  "logout": {
+    "en": "logout",
+    "es": "cerrar sesión",
+    "pt": "logout"
+  },
+  "description": {
+    "en": "description",
+    "es": "descripción",
+    "pt": "descrição"
+  },
+  "name": {
+    "en": "name",
+    "es": "nombre",
+    "pt": "nome"
+  },
+  "close": {
+    "en": "close",
+    "es": "cerrar",
+    "pt": "fechar"
+  },
+  "open": {
+    "en": "open",
+    "es": "abrir",
+    "pt": "abrir"
+  },
+  "about": {
+    "en": "about",
+    "es": "sobre nosotros",
+    "pt": "sobre"
+  },
+  "product": {
+    "en": "product",
+    "es": "producto",
+    "pt": "produto"
+  },
+  "myProfile": {
+    "en": "my profile",
+    "es": "mi perfil",
+    "pt": "meu perfil"
+  },
+  "comments": {
+    "en": "comments",
+    "es": "comentarios",
+    "pt": "comentários"
+  },
+  "user": {
+    "en": "user",
+    "es": "usuario",
+    "pt": "usuário"
+  },
+  "date": {
+    "en": "date",
+    "es": "fecha",
+    "pt": "data"
+  },
+  "address": {
+    "en": "address",
+    "es": "dirección",
+    "pt": "endereço"
+  },
+  "card": {
+    "en": "card",
+    "es": "tarjeta",
+    "pt": "cartão"
+  },
+  "cart": {
+    "en": "cart",
+    "es": "carro",
+    "pt": "carrinho"
+  },
+  "discount": {
+    "en": "discount",
+    "es": "descuento",
+    "pt": "desconto"
+  },
+  "total": {
+    "en": "total",
+    "es": "total",
+    "pt": "total"
+  },
+  "subtotal": {
+    "en": "subtotal",
+    "es": "subtotal",
+    "pt": "subtotal"
+  },
+  "coupon": {
+    "en": "coupon",
+    "es": "cupón",
+    "pt": "cupom"
+  },
+  "email": {
+    "en": "email",
+    "es": "correo electrónico",
+    "pt": "e-mail"
+  },
+  "password": {
+    "en": "password",
+    "es": "contraseña",
+    "pt": "senha"
+  },
+  "deliveryFee": {
+    "en": "delivery fee",
+    "es": "gastos de envío",
+    "pt": "valor da entrega"
+  },
+  "addresses": {
+    "en": "addresses",
+    "es": "direcciones",
+    "pt": "endereços"
+  },
+  "addComment": {
+    "en": "add comment",
+    "es": "agregar comentario",
+    "pt": "adicionar comentário"
+  },
+  "comment": {
+    "en": "comment",
+    "es": "comentario",
+    "pt": "comentário"
+  },
+  "register": {
+    "en": "register",
+    "es": "registrar",
+    "pt": "registrar"
+  },
+  "login": {
+    "en": "login",
+    "es": "inicio de sesión",
+    "pt": "login"
+  },
+  "signIn": {
+    "en": "sign in",
+    "es": "conectar",
+    "pt": "logar"
+  },
+  "signUp": {
+    "en": "sign up",
+    "es": "iniciar sesión",
+    "pt": "registrar"
+  },
+  "forgetPassword": {
+    "en": "forget my password",
+    "es": "olvide mi contraseña",
+    "pt": "esqueci minha senha"
+  },
+  "search": {
+    "en": "search",
+    "es": "buscar",
+    "pt": "pesquisar"
+  },
+  "currencySign": {
+    "en": "$",
+    "es": "$",
+    "pt": "R$"
+  },
+  "buy": {
+    "en": "buy",
+    "es": "comprar",
+    "pt": "comprar"
+  },
+  "return": {
+    "en": "return",
+    "es": "volver",
+    "pt": "retornar"
+  },
+  "change": {
+    "en": "change",
+    "es": "reemplazar",
+    "pt": "trocar"
+  },
+  "payment": {
+    "en": "payment",
+    "es": "pagamento",
+    "pt": "pagamento"
+  },
+  "type": {
+    "en": "type",
+    "es": "tipo",
+    "pt": "tipo"
+  },
+  "back": {
+    "en": "back",
+    "es": "volver",
+    "pt": "voltar"
+  },
+  "continue": {
+    "en": "continue",
+    "es": "seguir",
+    "pt": "continuar"
+  },
+  "tax": {
+    "en": "tax",
+    "es": "tasa",
+    "pt": "taxa"
+  },
+  "bonus": {
+    "en": "bonus",
+    "es": "bono",
+    "pt": "bônus"
+  },
+  "hello": {
+    "en": "hello",
+    "es": "hola",
+    "pt": "olá"
+  },
+  "logged": {
+    "en": "logged",
+    "es": "conectado",
+    "pt": "logado"
+  },
+  "messageNoLogged": {
+    "en": "you must be logged to do this action, please login",
+    "es": "debe iniciar sesión para realizar esta acción, por favor inicie sesión",
+    "pt": "é necessário estar logado para fazer essa ação, faça o login por favor"
+  },
+  "loading": {
+    "en": "loading",
+    "es": "cargando",
+    "pt": "carregando"
+  },
+  "finnished": {
+    "en": "finnished",
+    "es": "finalizado",
+    "pt": "finalizado"
+  },
+  "exchange": {
+    "en": "exchange",
+    "es": "disagree",
+    "pt": "trocar"
+  },
+  "cancel": {
+    "en": "cancel",
+    "es": "cancelar",
+    "pt": "cancelar"
+  },
+  "confirm": {
+    "en": "confirm",
+    "es": "confirmar",
+    "pt": "confirmar"
+  },
+  "ok": {
+    "en": "ok",
+    "es": "dale",
+    "pt": "certo"
+  },
+  "agree": {
+    "en": "agree",
+    "es": "de acuerdo",
+    "pt": "concordo"
+  },
+  "disagree": {
+    "en": "disagree",
+    "es": "no estoy de acuedo",
+    "pt": "discordo"
+  },
+  "installment": {
+    "en": "installment",
+    "es": "cuota",
+    "pt": "parcela"
+  },
+  "personalData": {
+    "en": "personal data",
+    "es": "datos personales",
+    "pt": "dados pessoais"
+  },
+  "new": {
+    "en": "new",
+    "es": "nuevo",
+    "pt": "novo"
+  },
+  "usersComments": {
+    "en": "users comments",
+    "es": "comentarios de los usuários",
+    "pt": "comentários dos usuários"
+  },
+  "questionsAnswers": {
+    "en": "questions & answers",
+    "es": "preguntas y respuestas",
+    "pt": "perguntas e respostas"
+  },
+  "couponCode": {
+    "en": "coupon code",
+    "es": "código cupón",
+    "pt": "código cupom"
+  },
+  "insertCoupon": {
+    "en": "insert coupon",
+    "es": "añadir un cupón",
+    "pt": "insira um cupom"
+  },
+  "size": {
+    "en": "size",
+    "es": "tamaño",
+    "pt": "tamanho"
+  },
+  "color": {
+    "en": "color",
+    "es": "color",
+    "pt": "cor"
+  },
+  "count": {
+    "en": "count",
+    "es": "cuantidad",
+    "pt": "quantidade"
+  },
+  "purchase": {
+    "en": "purchase",
+    "es": "compra",
+    "pt": "compra"
+  },
+  "myFavorites": {
+    "en": "my favorites",
+    "es": "mis favoritos",
+    "pt": "meus favoritos"
+  },
+  "myCart": {
+    "en": "my cart",
+    "es": "mi carro",
+    "pt": "meu carrinho"
+  },
+  "yourComment": {
+    "en": "your comment",
+    "es": "su comentario",
+    "pt": "seu comentário"
+  },
+  "mustSelectSizeColor": {
+    "en": "you must select at least a size and a color",
+    "es": "tiene que electionar un tamaño y una color",
+    "pt": "slecione um tamanho e uma cor"
+  },
+  "evaluate": {
+    "en": "evaluate",
+    "es": "evaluar",
+    "pt": ""
+  },
+  "eval": {
+    "en": "eval",
+    "es": "eval.",
+    "pt": "eval."
+  },
+  "sorryFriend": {
+    "en": "sorry about this friend",
+    "es": "lo siento por eso!",
+    "pt": "lamentamos pelo ocorrido"
+  },
+  "veryThanksFriend": {
+    "en": "it was a pleasure",
+    "es": "muchísimas gracias",
+    "pt": "esplêndido"
+  },
+  "greatFriend": {
+    "en": "thanks for the eval",
+    "es": "gracios por evaluar",
+    "pt": "gratos por sua avaliação"
+  },
+  "contacts": {
+    "en": "contacts",
+    "es": "contactos",
+    "pt": "contatos"
+  },
+  "myPurchase": {
+    "en": "my purchase",
+    "es": "mi compra",
+    "pt": "minha compra"
+  },
+  "personalId": {
+    "en": "personal identification",
+    "es": "identificación personal",
+    "pt": "número de identidade"
+  },
+  "creationDate": {
+    "en": "creation date",
+    "es": "fecha de creación",
+    "pt": "data de criação"
+  },
+  "deliveryDate": {
+    "en": "deliveryDate",
+    "es": "fecha de envio",
+    "pt": "data de envio"
+  },
+  "receivedDate": {
+    "en": "received date",
+    "es": "fecha de entrega",
+    "pt": "data de entrega"
+  },
+  "status": {
+    "en": "status",
+    "es": "estado",
+    "pt": "estado"
+  }
+}
