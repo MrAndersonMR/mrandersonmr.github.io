@@ -61,12 +61,15 @@ function AtCard({
       layout.includes("horizontal") ? "flex" : "",
     ].join(" ");
   }
-
+  {
+    /*sm:!w-[" + wImage + "]"*/
+  }
   function cssImageFormat() {
     return [
       "!object-cover",
-      "!w-[" + wImage + "]",
+      "w-[100%]",
       "!h-[" + hImage + "]",
+      "mt-6 md:mt-0",
       // styleRadius("image", themeStyle.image.radius, undefined),
     ].join(" ");
   }
@@ -132,7 +135,7 @@ function AtCard({
                 styleRadius("image", themeStyle.image.radius),
               ].join(" ")}
             />
-            <div className="absolute top-[10px] left-[10px]">
+            <div className="absolute top-[2rem] right-[1rem] md:top-[10px] md:left-[10px]">
               <AtBadge bg={"danger"} sentence={"new"} />
             </div>
           </>

@@ -26,6 +26,18 @@
   display: none !important;
 }
 
+.collapse {
+  visibility: visible !important;
+}
+
+.accordion-header > .accordion-button {
+  background-color: rgb(34 197 94) !important;
+}
+
+.card-img {
+  @media only screen and (max-width: 600px) { width: 40%; }
+}
+
 /* animations */
 
 /* ----------------------------------------------

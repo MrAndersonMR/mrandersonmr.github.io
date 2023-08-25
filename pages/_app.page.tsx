@@ -54,7 +54,7 @@ function loadTailwind() {
       <span className="!rounded-tl-[5rem] !rounded-br-[5rem] rounded-tl-[5rem] rounded-br-[5rem] rounded-none rounded-sm rounded rounded-md rounded-lg rounded-xl rounded-2xl rounded-3xl rounded-full">
         10
       </span>
-      <span className="ease-linear ease-in ease-out ease-in-out delay-100 delay-200 delay-300 delay-700 transition delay-150 duration-300 ease-in-out">
+      <span className="!w-[40%] !w-[100%] ease-linear ease-in ease-out ease-in-out delay-100 delay-200 delay-300 delay-700 transition delay-150 duration-300 ease-in-out">
         11
       </span>
     </div>

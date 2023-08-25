@@ -19,6 +19,7 @@ import AtScore from "../atoms/atScore";
 import AtIcon from "../atoms/atIcon";
 import AtForm from "../atoms/atForm";
 import { monetaryFormat } from "../config/formatConfig";
+import AtAccordion from "../atoms/atAccordion";
 
 function SecProfile({ user }: { user: User }) {
   // const themeStyle = useThemeStyle();
@@ -220,8 +221,54 @@ function SecProfile({ user }: { user: User }) {
         <>
           <Row>
             <Col className="md:border-r-2 border-r-0 border-sky-500">
-              <AtText type="subtitle" sentence="l|:settings" />
-              <AtText
+              <AtText type="subtitle" sentence="l|:settings" css="mt-4" />
+              <div className="mt-6" />
+              <AtAccordion
+                headers={["l|:meal", "l|:food"]}
+                bodies={[
+                  <>
+                    <AtForm
+                      level="main"
+                      placeholder="l|:new meal"
+                      css={["my-2"]}
+                      click={[() => {}]}
+                      iconName={["add"]}
+                    />
+                    <AtForm
+                      level="main"
+                      placeholder="l|:average hour"
+                      css={["my-2"]}
+                    />
+                  </>,
+                  <>
+                    <AtForm
+                      level="main"
+                      placeholder="l|:new food"
+                      css={["my-2"]}
+                      click={[() => {}]}
+                      iconName={["add"]}
+                    />
+                    <AtForm
+                      level="main"
+                      placeholder="l|:calories"
+                      css={["my-2"]}
+                    />
+                    <AtText type="legend" sentence="l|:composition" />
+                    <AtForm
+                      level="main"
+                      placeholder="l|:carbohydrates"
+                      css={["my-2"]}
+                    />
+                    <AtForm level="main" placeholder="l|:fats" css={["my-2"]} />
+                    <AtForm
+                      level="main"
+                      placeholder="l|:proteins"
+                      css={["my-2"]}
+                    />
+                  </>,
+                ]}
+              />
+              {/* <AtText
                 type="text"
                 sentence="l|:meal"
                 css="mt-6 mb-3 border-b-2 border-green-500"
@@ -262,11 +309,11 @@ function SecProfile({ user }: { user: User }) {
               <AtForm level="main" placeholder="l|:vitamins" css={["my-2"]} />
               <AtForm level="main" placeholder="l|:calcium" css={["my-2"]} />
               <AtForm level="main" placeholder="l|:fiber" css={["my-2"]} />
-              <AtForm level="main" placeholder="l|:iron" css={["my-2"]} />
+              <AtForm level="main" placeholder="l|:iron" css={["my-2"]} /> */}
             </Col>
             <Col>
-              <AtText type="subtitle" sentence="l|:my routine" />
-              <AtText type="text" sentence="l|:select a meal" />
+              <AtText type="subtitle" sentence="l|:my routine" css="mt-4" />
+              <AtText type="text" sentence="l|:select a meal" css="mt-6" />
               <AtForm
                 type="select"
                 listValues={[]}
@@ -286,240 +333,249 @@ function SecProfile({ user }: { user: User }) {
                 placeholder="l|:new meal topic"
                 css={["my-2"]}
               />
-              <AtText type="text" sentence="l|:calories" />
-              <div className="flex items-center">
-                <ProgressBar
-                  striped
-                  variant="primary"
-                  max={300}
-                  now={
-                    foodListNames[food]
-                      ? foodList[foodListNames[food]].calories.replace(
-                          /[^\d.-]/g,
-                          ""
-                        )
-                      : 0
-                  }
-                  className="w-[90%]"
-                />
-                <AtText
-                  css="ml-2"
-                  type="legend"
-                  sentence={
-                    "l|:" +
-                    (foodListNames[food]
-                      ? foodList[foodListNames[food]].calories.replace(
-                          /[^\d.-]/g,
-                          ""
-                        )
-                      : undefined)
-                  }
-                />
+              <div
+                className={foodListNames[food] !== undefined ? "" : "hidden"}
+              >
+                <AtText type="text" sentence="l|:calories" />
+                <div className="flex items-center">
+                  <ProgressBar
+                    striped
+                    variant="primary"
+                    max={300}
+                    now={
+                      foodListNames[food]
+                        ? foodList[foodListNames[food]].calories.replace(
+                            /[^\d.-]/g,
+                            ""
+                          )
+                        : 0
+                    }
+                    className="w-[90%]"
+                  />
+                  <AtText
+                    css="ml-2"
+                    type="legend"
+                    sentence={
+                      "l|:" +
+                      (foodListNames[food]
+                        ? foodList[foodListNames[food]].calories
+                        : // .replace(
+                          //     /[^\d.-]/g,
+                          //     ""
+                          //   )
+                          undefined)
+                    }
+                  />
+                </div>
+                <AtText type="text" sentence="l|:carbohydrates" />
+                <div className="flex items-center">
+                  <ProgressBar
+                    striped
+                    variant="secondary"
+                    now={
+                      foodListNames[food]
+                        ? foodList[foodListNames[food]].carbohydrates.replace(
+                            /[^\d.-]/g,
+                            ""
+                          )
+                        : 0
+                    }
+                    className="w-[90%]"
+                  />
+                  <AtText
+                    css="ml-2"
+                    type="legend"
+                    sentence={
+                      "l|:" +
+                      (foodListNames[food]
+                        ? foodList[foodListNames[food]].carbohydrates
+                        : // .replace(
+                          //     /[^\d.-]/g,
+                          //     ""
+                          //   )
+                          undefined)
+                    }
+                  />
+                </div>
+                <AtText type="text" sentence="l|:fats" />
+                <div className="flex items-center">
+                  <ProgressBar
+                    striped
+                    variant="secondary"
+                    aria-valuemax={200}
+                    now={
+                      foodListNames[food]
+                        ? foodList[foodListNames[food]].fats.replace(
+                            /[^\d.-]/g,
+                            ""
+                          )
+                        : 0
+                    }
+                    className="w-[90%]"
+                  />
+                  <AtText
+                    css="ml-2"
+                    type="legend"
+                    sentence={
+                      "l|:" +
+                      (foodListNames[food]
+                        ? foodList[foodListNames[food]].fats
+                        : // .replace(
+                          //     /[^\d.-]/g,
+                          //     ""
+                          //   )
+                          undefined)
+                    }
+                  />
+                </div>
+                <AtText type="text" sentence="l|:proteins" />
+                <div className="flex items-center">
+                  <ProgressBar
+                    striped
+                    variant="secondary"
+                    now={
+                      foodListNames[food]
+                        ? foodList[foodListNames[food]].proteins.replace(
+                            /[^\d.-]/g,
+                            ""
+                          )
+                        : 0
+                    }
+                    className="w-[90%]"
+                  />
+                  <AtText
+                    css="ml-2"
+                    type="legend"
+                    sentence={
+                      "l|:" +
+                      (foodListNames[food]
+                        ? foodList[foodListNames[food]].proteins
+                        : // .replace(
+                          //     /[^\d.-]/g,
+                          //     ""
+                          //   )
+                          undefined)
+                    }
+                  />
+                </div>
+                {/* <AtText type="text" sentence="l|:vitamins" />
+                <div className="flex items-center">
+                  <ProgressBar
+                    striped
+                    variant="secondary"
+                    now={
+                      foodListNames[food]
+                        ? foodList[foodListNames[food]].vitamins.replace(
+                            /[^\d.-]/g,
+                            ""
+                          )
+                        : 0
+                    }
+                    className="w-[90%]"
+                  />
+                  <AtText
+                    css="ml-2"
+                    type="legend"
+                    sentence={
+                      "l|:" +
+                      (foodListNames[food]
+                        ? foodList[foodListNames[food]].vitamins.replace(
+                            /[^\d.-]/g,
+                            ""
+                          )
+                        : undefined)
+                    }
+                  />
+                </div>
+                <AtText type="text" sentence="l|:calcium" />
+                <div className="flex items-center">
+                  <ProgressBar
+                    striped
+                    variant="secondary"
+                    now={
+                      foodListNames[food]
+                        ? foodList[foodListNames[food]].calcium.replace(
+                            /[^\d.-]/g,
+                            ""
+                          )
+                        : 0
+                    }
+                    className="w-[90%]"
+                  />
+                  <AtText
+                    css="ml-2"
+                    type="legend"
+                    sentence={
+                      "l|:" +
+                      (foodListNames[food]
+                        ? foodList[foodListNames[food]].calcium.replace(
+                            /[^\d.-]/g,
+                            ""
+                          )
+                        : undefined)
+                    }
+                  />
+                </div>
+                <AtText type="text" sentence="l|:fiber" />
+                <div className="flex items-center">
+                  <ProgressBar
+                    striped
+                    variant="secondary"
+                    now={
+                      foodListNames[food]
+                        ? foodList[foodListNames[food]].fiber.replace(
+                            /[^\d.-]/g,
+                            ""
+                          )
+                        : 0
+                    }
+                    className="w-[90%]"
+                  />
+                  <AtText
+                    css="ml-2"
+                    type="legend"
+                    sentence={
+                      "l|:" +
+                      (foodListNames[food]
+                        ? foodList[foodListNames[food]].fiber.replace(
+                            /[^\d.-]/g,
+                            ""
+                          )
+                        : undefined)
+                    }
+                  />
+                </div>
+                <AtText type="text" sentence="l|:iron" />
+                <div className="flex items-center">
+                  <ProgressBar
+                    striped
+                    variant="secondary"
+                    now={
+                      foodListNames[food]
+                        ? foodList[foodListNames[food]].iron.replace(
+                            /[^\d.-]/g,
+                            ""
+                          )
+                        : 0
+                    }
+                    className="w-[90%]"
+                  />
+                  <AtText
+                    css="ml-2"
+                    type="legend"
+                    sentence={
+                      "l|:" +
+                      (foodListNames[food]
+                        ? foodList[foodListNames[food]].iron.replace(
+                            /[^\d.-]/g,
+                            ""
+                          )
+                        : undefined)
+                    }
+                  />
+                </div> */}
               </div>
-              <AtText type="text" sentence="l|:carbohydrates" />
-              <div className="flex items-center">
-                <ProgressBar
-                  striped
-                  variant="secondary"
-                  now={
-                    foodListNames[food]
-                      ? foodList[foodListNames[food]].carbohydrates.replace(
-                          /[^\d.-]/g,
-                          ""
-                        )
-                      : 0
-                  }
-                  className="w-[90%]"
-                />
-                <AtText
-                  css="ml-2"
-                  type="legend"
-                  sentence={
-                    "l|:" +
-                    (foodListNames[food]
-                      ? foodList[foodListNames[food]].carbohydrates.replace(
-                          /[^\d.-]/g,
-                          ""
-                        )
-                      : undefined)
-                  }
-                />
-              </div>
-              <AtText type="text" sentence="l|:fats" />
-              <div className="flex items-center">
-                <ProgressBar
-                  striped
-                  variant="secondary"
-                  aria-valuemax={200}
-                  now={
-                    foodListNames[food]
-                      ? foodList[foodListNames[food]].fats.replace(
-                          /[^\d.-]/g,
-                          ""
-                        )
-                      : 0
-                  }
-                  className="w-[90%]"
-                />
-                <AtText
-                  css="ml-2"
-                  type="legend"
-                  sentence={
-                    "l|:" +
-                    (foodListNames[food]
-                      ? foodList[foodListNames[food]].fats.replace(
-                          /[^\d.-]/g,
-                          ""
-                        )
-                      : undefined)
-                  }
-                />
-              </div>
-              <AtText type="text" sentence="l|:proteins" />
-              <div className="flex items-center">
-                <ProgressBar
-                  striped
-                  variant="secondary"
-                  now={
-                    foodListNames[food]
-                      ? foodList[foodListNames[food]].proteins.replace(
-                          /[^\d.-]/g,
-                          ""
-                        )
-                      : 0
-                  }
-                  className="w-[90%]"
-                />
-                <AtText
-                  css="ml-2"
-                  type="legend"
-                  sentence={
-                    "l|:" +
-                    (foodListNames[food]
-                      ? foodList[foodListNames[food]].proteins.replace(
-                          /[^\d.-]/g,
-                          ""
-                        )
-                      : undefined)
-                  }
-                />
-              </div>
-              <AtText type="text" sentence="l|:vitamins" />
-              <div className="flex items-center">
-                <ProgressBar
-                  striped
-                  variant="secondary"
-                  now={
-                    foodListNames[food]
-                      ? foodList[foodListNames[food]].vitamins.replace(
-                          /[^\d.-]/g,
-                          ""
-                        )
-                      : 0
-                  }
-                  className="w-[90%]"
-                />
-                <AtText
-                  css="ml-2"
-                  type="legend"
-                  sentence={
-                    "l|:" +
-                    (foodListNames[food]
-                      ? foodList[foodListNames[food]].vitamins.replace(
-                          /[^\d.-]/g,
-                          ""
-                        )
-                      : undefined)
-                  }
-                />
-              </div>
-              <AtText type="text" sentence="l|:calcium" />
-              <div className="flex items-center">
-                <ProgressBar
-                  striped
-                  variant="secondary"
-                  now={
-                    foodListNames[food]
-                      ? foodList[foodListNames[food]].calcium.replace(
-                          /[^\d.-]/g,
-                          ""
-                        )
-                      : 0
-                  }
-                  className="w-[90%]"
-                />
-                <AtText
-                  css="ml-2"
-                  type="legend"
-                  sentence={
-                    "l|:" +
-                    (foodListNames[food]
-                      ? foodList[foodListNames[food]].calcium.replace(
-                          /[^\d.-]/g,
-                          ""
-                        )
-                      : undefined)
-                  }
-                />
-              </div>
-              <AtText type="text" sentence="l|:fiber" />
-              <div className="flex items-center">
-                <ProgressBar
-                  striped
-                  variant="secondary"
-                  now={
-                    foodListNames[food]
-                      ? foodList[foodListNames[food]].fiber.replace(
-                          /[^\d.-]/g,
-                          ""
-                        )
-                      : 0
-                  }
-                  className="w-[90%]"
-                />
-                <AtText
-                  css="ml-2"
-                  type="legend"
-                  sentence={
-                    "l|:" +
-                    (foodListNames[food]
-                      ? foodList[foodListNames[food]].fiber.replace(
-                          /[^\d.-]/g,
-                          ""
-                        )
-                      : undefined)
-                  }
-                />
-              </div>
-              <AtText type="text" sentence="l|:iron" />
-              <div className="flex items-center">
-                <ProgressBar
-                  striped
-                  variant="secondary"
-                  now={
-                    foodListNames[food]
-                      ? foodList[foodListNames[food]].iron.replace(
-                          /[^\d.-]/g,
-                          ""
-                        )
-                      : 0
-                  }
-                  className="w-[90%]"
-                />
-                <AtText
-                  css="ml-2"
-                  type="legend"
-                  sentence={
-                    "l|:" +
-                    (foodListNames[food]
-                      ? foodList[foodListNames[food]].iron.replace(
-                          /[^\d.-]/g,
-                          ""
-                        )
-                      : undefined)
-                  }
-                />
-              </div>
+              <div className="mb-4" />
             </Col>
           </Row>
         </>
@@ -1036,7 +1092,7 @@ function SecProfile({ user }: { user: User }) {
               iconName={["edit"]}
             />
           </Col>
-          <Col md={user.type === "patient" ? 12 : 4}>{userType(user.type)}</Col>
+          <Col md={user.type === "patient" ? 12 : 8}>{userType(user.type)}</Col>
         </Row>
       </Container>
     </>
