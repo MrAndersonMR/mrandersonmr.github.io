@@ -1,5 +1,12 @@
 import React, { useContext, useState } from "react";
-import { Button, Col, Row } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Modal,
+  Row,
+  Toast,
+  ToastContainer,
+} from "react-bootstrap";
 // import {
 //   useThemeStyle,
 //   useThemeStyleUpdate,
@@ -13,6 +20,8 @@ import AtIcon from "../atoms/atIcon";
 import AtText from "../atoms/atText";
 import { ThemeStyleContext } from "../../context/themeStyleContext";
 import AtButton from "../atoms/atButton";
+
+import AtToast from "../atoms/atToast";
 
 //moda, petshop, moveis, farmacia, comida, hostel, curso
 //Formosa, Dr. Dogo, Made In San Telmo, farmacia trébol de 4 hojas, Rio-Lumpur, Instituto de Ensino Viena
@@ -34,6 +43,8 @@ function SecHead({
 
   const [show, setShow] = useState(false);
 
+  const [showModal, setShowModal] = useState(true);
+
   function mainComponentStyle() {
     return [
       "flex justify-center items-center",
@@ -46,13 +57,19 @@ function SecHead({
     ].join(" ");
   }
 
-  const styleConst = "fill";
+  const styleConst = "circle";
 
   return (
     <>
-      <Button className="fixed let-0 bottom-0" onClick={() => setShow(!show)}>
+      {/* <Button className="fixed let-0 bottom-0" onClick={() => setShow(!show)}>
         show
-      </Button>
+      </Button> */}
+      {/* <Button
+        className="fixed let-0 bottom-0"
+        onClick={() => setShowModal(true)}
+      >
+        A
+      </Button> */}
       {show ? (
         <>
           <AtText type="title" sentence="l|:Gloock" css="!font-[Gloock]" />
@@ -138,11 +155,6 @@ function SecHead({
           />
           <AtText
             type="title"
-            sentence="l|:Liu_Jian_Mao_Cao"
-            css="!font-['Liu_Jian_Mao_Cao']"
-          />
-          <AtText
-            type="title"
             sentence="l|:Poltawski_Nowy"
             css="!font-['Poltawski_Nowy']"
           />
@@ -152,6 +164,16 @@ function SecHead({
             type="title"
             sentence="l|:Yeseva_One"
             css="!font-['Yeseva_One']"
+          />
+          <AtText
+            type="title"
+            sentence="l|:Petit_Formal_Script"
+            css="!font-['Petit_Formal_Script']"
+          />
+          <AtText
+            type="title"
+            sentence="l|:Meow_Script"
+            css="!font-['Meow_Script']"
           />
 
           <AtText type="title" sentence="l|:Atlantico" />
@@ -237,26 +259,82 @@ function SecHead({
           </span>
         </>
       ) : undefined}
-      <div
-        className={[
-          "flex justify-center items-center w-full h-[100vh] bg-cover bg-center bg-[url('",
-          themeStyle.images.bg.url,
-          "')]",
-        ].join("")}
-      >
-        <Row className="w-full">
-          {layout === "right" ? <Col></Col> : undefined}
-          <Col
+      {themeStyle.images.bg.url &&
+      themeStyle.images.bg.url.split("|:")[0] &&
+      themeStyle.images.bg.url.split("|:")[0] === "v" ? (
+        <div
+          className={[
+            "flex justify-center items-center w-full h-[100vh] bg-cover bg-center",
+          ].join("")}
+        >
+          <iframe
             className={
-              "flex flex-col " +
-              (layout === "center"
-                ? "items-center justify-center"
-                : layout === "left"
-                ? "items-end justify-end"
-                : "items-start justify-start")
+              "inline-block justify-center items-center w-full h-[100vh] bg-cover bg-center"
             }
-          >
-            {/* <h1
+            src={themeStyle.images.bg.url.split("|:")[1]} //"https://player.vimeo.com/video/702458133?autoplay=1&muted=1&showinfo=0&controls=0"
+            allow="autoplay; fullscreen"
+          />
+          <Row className="absolute top-[50%] w-full">
+            {layout === "right" ? <Col></Col> : undefined}
+            <Col
+              className={
+                "flex flex-col " +
+                (layout === "center"
+                  ? "items-center justify-center"
+                  : layout === "left"
+                  ? "items-end justify-end"
+                  : "items-start justify-start")
+              }
+            >
+              <AtText
+                type="title"
+                sentence={themeStyle.texts.title}
+                css={[css[0], "capitalize select-none"].join(" ")}
+              />
+              <AtText
+                type="subtitle"
+                sentence={themeStyle.texts.subtitle}
+                css="select-none"
+              />
+              <div>
+                {false ? (
+                  themeStyle.texts.links.map((e, i) => {
+                    if (e.split("|")[0] === "lmb" || e.split("|")[0] === "mb")
+                      return (
+                        <div key={i}>
+                          <AtButton sentence={"l|:" + e} />
+                        </div>
+                      );
+                  })
+                ) : (
+                  <></>
+                )}
+              </div>
+            </Col>
+            {layout === "left" ? <Col></Col> : undefined}
+          </Row>
+        </div>
+      ) : (
+        <div
+          className={[
+            "flex justify-center items-center w-full h-[100vh] bg-cover bg-center bg-[url('",
+            themeStyle.images.bg.url,
+            "')]",
+          ].join("")}
+        >
+          <Row className="w-full">
+            {layout === "right" ? <Col></Col> : undefined}
+            <Col
+              className={
+                "flex flex-col " +
+                (layout === "center"
+                  ? "items-center justify-center"
+                  : layout === "left"
+                  ? "items-end justify-end"
+                  : "items-start justify-start")
+              }
+            >
+              {/* <h1
               className={[
                 "font-[" + themeStyle.text.main.font + "]",
                 "text-" + themeStyle.text.main.color,
@@ -268,13 +346,34 @@ function SecHead({
                 ? themeStyle.texts.title.split("|")[1]
                 : translations(themeStyle.texts.title, language)}
             </h1> */}
-            <AtText
-              type="title"
-              sentence={themeStyle.texts.title}
-              css={[css[0], "capitalize"].join(" ")}
-            />
-            <AtText type="subtitle" sentence={themeStyle.texts.subtitle} />
-            {/* <h6
+              <AtText
+                type="title"
+                sentence={themeStyle.texts.title}
+                css={[css[0], "capitalize select-none"].join(" ")}
+              />
+              {themeStyle.themeName === "czar+" ? (
+                <div className="flex flex-col items-center my-4">
+                  <AtIcon
+                    iconType="pi"
+                    icon="PiWhatsappLogoThin"
+                    size="78px"
+                    css="text-[#0dc143]"
+                  />
+                  <AtButton
+                    sentence="l|:Anderson"
+                    href="https://wa.me/5491155802908"
+                    css="!bg-[#0dc143] !border-[#0dc143]"
+                  />
+                </div>
+              ) : (
+                <></>
+              )}
+              <AtText
+                type="subtitle"
+                sentence={themeStyle.texts.subtitle}
+                css="select-none text-center"
+              />
+              {/* <h6
               className={[
                 "font-[" + themeStyle.text.secondary.font + "]",
                 "text-" + themeStyle.text.secondary.color,
@@ -290,45 +389,45 @@ function SecHead({
                 ? themeStyle.texts.subtitle.split("|")[1]
                 : translations(themeStyle.texts.subtitle, language)}
             </h6> */}
-            <div>
-              {false ? (
-                themeStyle.texts.links.map((e, i) => {
-                  if (e.split("|")[0] === "lmb" || e.split("|")[0] === "mb")
-                    return (
-                      <div key={i}>
-                        <AtButton sentence={"l|:" + e} />
-                      </div>
-                      // <Button
-                      //   key={i}
-                      //   className={styleRadius(
-                      //     "button",
-                      //     themeStyle.button.main.radius,
-                      //     "main"
-                      //   )}
-                      // >
-                      //   <span
-                      //     className={[
-                      //       "font-[" + themeStyle.text.base.font + "]",
-                      //       "text-" + themeStyle.text.base.color,
-                      //       " text-" + themeStyle.text.base.size,
-                      //       // styleShadow(
-                      //       //   "text",
-                      //       //   "base",
-                      //       //   themeStyle.text.base.shadow
-                      //       // ),
-                      //     ].join(" ")}
-                      //   >
-                      //     {e.split("|")[0] === "lmb"
-                      //       ? e.split("|")[1]
-                      //       : translations(e.split("|")[1], language)}
-                      //   </span>
-                      // </Button>
-                    );
-                })
-              ) : (
-                <></>
-              )}
-              {/* <Button
+              <div>
+                {false ? (
+                  themeStyle.texts.links.map((e, i) => {
+                    if (e.split("|")[0] === "lmb" || e.split("|")[0] === "mb")
+                      return (
+                        <div key={i}>
+                          <AtButton sentence={"l|:" + e} />
+                        </div>
+                        // <Button
+                        //   key={i}
+                        //   className={styleRadius(
+                        //     "button",
+                        //     themeStyle.button.main.radius,
+                        //     "main"
+                        //   )}
+                        // >
+                        //   <span
+                        //     className={[
+                        //       "font-[" + themeStyle.text.base.font + "]",
+                        //       "text-" + themeStyle.text.base.color,
+                        //       " text-" + themeStyle.text.base.size,
+                        //       // styleShadow(
+                        //       //   "text",
+                        //       //   "base",
+                        //       //   themeStyle.text.base.shadow
+                        //       // ),
+                        //     ].join(" ")}
+                        //   >
+                        //     {e.split("|")[0] === "lmb"
+                        //       ? e.split("|")[1]
+                        //       : translations(e.split("|")[1], language)}
+                        //   </span>
+                        // </Button>
+                      );
+                  })
+                ) : (
+                  <></>
+                )}
+                {/* <Button
                 className={getBorder("button", "main", themeStyle.button.main.border)}
                 variant={"dark"}
               >
@@ -365,11 +464,45 @@ function SecHead({
                   Ribeiro
                 </span>
               </Button> */}
-            </div>
-          </Col>
-          {layout === "left" ? <Col></Col> : undefined}
-        </Row>
-      </div>
+              </div>
+            </Col>
+            {layout === "left" ? <Col></Col> : undefined}
+          </Row>
+        </div>
+      )}
+
+      <AtToast
+        defShow={showModal}
+        defSetShow={setShowModal}
+        position="bottom-center"
+        title="l|:Bienvenido a los portifolios de CZAR+"
+        content="l|:Haga clic o presione la palabra CZAR+ en la esquina inferior derecha
+        y elija uno de los ejemplos."
+        bg="secondary"
+      />
+      {/* <ToastContainer
+        className="p-3"
+        position={"bottom-center"}
+        style={{ zIndex: 9999 }}
+      >
+        <Toast show={showModal} onClose={() => setShowModal(false)} bg="dark">
+          <Toast.Header>
+            <img
+              src="holder.js/20x20?text=%20"
+              className="rounded me-2"
+              alt=""
+            />
+            <strong className="me-auto">
+              Bienvenido a los portifolios de CZAR+
+            </strong>
+            <small></small>
+          </Toast.Header>
+          <Toast.Body className="text-white">
+            Haga clic o presione la palabra CZAR+ en la esquina inferior derecha
+            y elija uno de los ejemplos.
+          </Toast.Body>
+        </Toast>
+      </ToastContainer> */}
     </>
   );
 }

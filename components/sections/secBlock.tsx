@@ -37,6 +37,8 @@ import AtBadge from "../atoms/atBadge";
 import { monetaryFormat } from "../config/formatConfig";
 import { LanguageContext } from "../../context/languageContext";
 import { ThemeStyleContext } from "../../context/themeStyleContext";
+import AtPopover from "../atoms/atPopover";
+import AtToast from "../atoms/atToast";
 
 function SecBlock({
   type = undefined,
@@ -88,6 +90,8 @@ function SecBlock({
   // const language = useLanguage();
   // const toggleLanguage = useLanguageUpdate();
   const [language, setLanguage] = useContext(LanguageContext);
+
+  const [showToast, setShowToast] = useState(false);
 
   // const images = [
   //   "https://images.unsplash.com/photo-1592878858320-cec76c56da82?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=580&q=80",
@@ -199,7 +203,7 @@ function SecBlock({
         setUserCart(e.cartList);
       }
     });
-  }, []);
+  });
 
   useEffect(() => {
     if (user && user.fav && item)
@@ -308,6 +312,7 @@ function SecBlock({
     // console.log(user);
     if (badgeIcon === "RiHeart2Line") {
       setBadgeIcon("RiHeart2Fill");
+
       let userScp = user;
       if (userScp.fav) userScp.fav.push(item.id);
       else {
@@ -326,6 +331,7 @@ function SecBlock({
       setLocalStorage("users", usersScp);
     } else {
       setBadgeIcon("RiHeart2Line");
+
       let userScp = user;
       if (userScp.fav) userScp.fav = userScp.fav.filter((e) => e !== item.id);
       setUser(userScp);
@@ -463,7 +469,7 @@ function SecBlock({
                 </Button>
               </ButtonGroup> */}
               <div className="flex items-center gap-2">
-                <AtButton
+                {/* <AtButton
                   level="secondary"
                   iconName="less"
                   // iconType="bs"
@@ -471,15 +477,15 @@ function SecBlock({
                   click={() => {
                     if (quantity > 0) setQuantity(quantity - 1);
                   }}
-                />
+                /> */}
                 <AtForm level="secondary" value={quantity} />
-                <AtButton
+                {/* <AtButton
                   level="secondary"
                   iconName="add"
                   // iconType="bs"
                   // icon="BsPlusLg"
                   click={() => setQuantity(quantity + 1)}
-                />
+                /> */}
               </div>
             </div>
           </Card>
@@ -522,7 +528,7 @@ function SecBlock({
               <Badge
                 bg="light"
                 onClick={() => {
-                  handleFav();
+                  user ? handleFav() : setShowToast(true);
                 }}
                 className={[
                   "text-black !p-2 hover:!bg-red-300 hover:!text-white",
@@ -630,6 +636,13 @@ function SecBlock({
         setShow={setShowNoTokenModal}
         type="token"
         carts={{ cartList: [] }}
+      />
+      <AtToast
+        defShow={showToast}
+        defSetShow={setShowToast}
+        position="bottom-center"
+        title="notLogged"
+        content="pleaseDoLogin"
       />
     </>
   );

@@ -39,6 +39,16 @@
     "es": "sobre nosotros",
     "pt": "sobre"
   },
+  "team": {
+    "en": "team",
+    "es": "equipo",
+    "pt": "time"
+  },
+  "contact": {
+    "en": "contact",
+    "es": "contacto",
+    "pt": "contato"
+  },
   "product": {
     "en": "product",
     "es": "producto",
@@ -336,8 +346,8 @@
   },
   "mustSelectSizeColor": {
     "en": "you must select at least a size and a color",
-    "es": "tiene que electionar un tamaño y una color",
-    "pt": "slecione um tamanho e uma cor"
+    "es": "tiene que selectionar un tamaño y una color",
+    "pt": "selecione um tamanho e uma cor"
   },
   "evaluate": {
     "en": "evaluate",
@@ -398,5 +408,70 @@
     "en": "status",
     "es": "estado",
     "pt": "estado"
+  },
+  "pharmacy": {
+    "en": "pharmacy",
+    "es": "farmacia",
+    "pt": "farmácia"
+  },
+  "noValue": {
+    "en": "no value",
+    "es": "no hay valores",
+    "pt": "sem dados"
+  },
+  "label": {
+    "en": "label",
+    "es": "rótulo",
+    "pt": "nome"
+  },
+  "feature": {
+    "en": "feature",
+    "es": "característica",
+    "pt": "característica"
+  },
+  "infos": {
+    "en": "infos",
+    "es": "informaciones",
+    "pt": "informações"
+  },
+  "notLogged": {
+    "en": "you are not logged in",
+    "es": "no estas conectado",
+    "pt": "você não está logado"
+  },
+  "pleaseDoLogin": {
+    "en": "please, register, if is necessary, and log in",
+    "es": "por favor regístrate y conéctate primero",
+    "pt": "registre-se se ainda não o fez e logue-se, por favor"
+  },
+  "goPay": {
+    "en": "go to pay",
+    "es": "hacer pagamento",
+    "pt": "pagar"
+  },
+  "verifyingCard": {
+    "en": "verifying your card",
+    "es": "verificando tu tarjeta",
+    "pt": "validando seu cartão"
+  },
+  "sendCartToShop": {
+    "en": "send your cart data to the shop",
+    "es": "enviando los datos del carro a la tienda",
+    "pt": "enviando os produtos a loja"
+  },
+  "deliveryCalculate": {
+    "en": "check delivery disponibility and calculate date to send",
+    "es": "calculando la fecha de entrega según la disponibilidad del delivery",
+    "pt": "verificando a disponibilidade do entregador e calculando data de entrega"
+  },
+  "finalizePurchase": {
+    "en": "finalize purchase",
+    "es": "finalizar compra",
+    "pt": "finalizar compra"
+  },
+  "thanksForBuy": {
+    "en": "thanks for buy with us",
+    "es": "gracias por eligirnos",
+    "pt": "obrigado pela preferência"
   }
 }

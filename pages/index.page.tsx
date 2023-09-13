@@ -30,7 +30,7 @@ function IndexPage({ items }: Props) {
       {/* <PgInfo /> */}
       {themeStyle.layouts && themeStyle.layouts.base.includes("head") ? (
         <SecHead
-          layout="right"
+          layout="center"
           css={[themeStyle.layouts ? themeStyle.layouts.head.css : ""]}
         />
       ) : (
@@ -52,7 +52,7 @@ function IndexPage({ items }: Props) {
       <SecFilter />
     </SecLayoutPage> */}
       {themeStyle.layouts && themeStyle.layouts.base.includes("list") ? (
-        <SecGrid list={items} />
+        <SecGrid list={items} filter={themeStyle.definitions.grid.filter} />
       ) : (
         <></>
       )}

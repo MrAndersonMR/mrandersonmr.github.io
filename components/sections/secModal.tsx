@@ -18,11 +18,14 @@ import AtIcon from "../atoms/atIcon";
 import { ThemeContext } from "../../context/themeContext";
 import { styleTheme } from "../config/stylesConfig";
 import { ThemeStyleContext } from "../../context/themeStyleContext";
+import AtToast from "../atoms/atToast";
 
 function SecModal({
+  userPr = undefined,
   type = undefined,
   show = false,
   setShow = undefined,
+  setShowEx = undefined,
   item = undefined,
   title = undefined,
   text = undefined,
@@ -33,9 +36,11 @@ function SecModal({
   closeButton = "none",
   size = undefined,
 }: {
+  userPr?: any;
   type?: string;
   show: boolean;
   setShow: any;
+  setShowEx?: any;
   item?: Product;
   title?: string;
   text?: string;
@@ -60,6 +65,7 @@ function SecModal({
   const [themeStyle, setThemeStyle] = useContext(ThemeStyleContext);
 
   const [user, setUser] = useState<User>();
+  const [tutorial, setTutorial] = useState(true);
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("users")))
@@ -94,27 +100,68 @@ function SecModal({
     const values = {
       cart: (
         <>
-          <ElCartList carts={carts} />
+          <ElCartList carts={carts} setShow={setShow} />
+          <AtToast
+            defShow={tutorial}
+            defSetShow={setTutorial}
+            position="bottom-center"
+            closeButton={true}
+            title="l|:Finaliza una compra"
+            content={[
+              "l|:Finaliza tu compra y despues mira los productos que ya compraste y evalualos, los que esta para comprar y tus favoritos",
+            ].join(" ")}
+          />
         </>
       ),
       item: (
         <>
           <ElShowcase item={item} />
+          <AtToast
+            defShow={tutorial}
+            defSetShow={setTutorial}
+            position="bottom-center"
+            closeButton={true}
+            title="l|:Probar agregar productos en tu carro"
+            content={[
+              "l|:Proba agrega productos y comenta sobre los productos",
+            ].join(" ")}
+          />
         </>
       ),
       noLogged: <AtText sentence="messageNoLogged" type="text" />,
-      profile: user ? <SecProfile user={user} /> : <></>,
+      profile: userPr ? (
+        <>
+          <SecProfile user={userPr} />
+          <AtToast
+            defShow={tutorial}
+            defSetShow={setTutorial}
+            position="bottom-center"
+            closeButton={true}
+            title="l|:Actualiza los datos de tu Perfil"
+            content={[
+              "l|:Agrega número de documento, tarjeta, contactos y direcciones",
+            ].join(" ")}
+          />
+        </>
+      ) : (
+        <></>
+      ),
       purchase: (
         <>
-          <AtText sentence="l|:Verifying your Card" />
-          <AtText sentence="l|:Send Your Cart Data to the Shop" />
-          <AtText sentence="l|:Check Delivery Disponibility and Calculate Date to Send" />
-          <AtText sentence="l|:Thanks for buy with us" />
-          <AtText
+          <AtText sentence="verifyingCard" />
+          <AtText sentence="sendCartToShop" />
+          <AtText sentence="deliveryCalculate" />
+          <AtText sentence="thanksForBuy" />
+          {/* <AtText
             type="legend"
             sentence="l|:your purchase you by delivery at"
-          />
-          <AtButton sentence="l|:Purchase" click={() => finishPurchase()} />
+          /> */}
+          <div className="flex justify-end">
+            <AtButton
+              sentence="finalizePurchase"
+              click={() => finishPurchase()}
+            />
+          </div>
           {/* {user ? JSON.stringify(user.histPurchase) : ""} */}
         </>
       ),
@@ -168,6 +215,7 @@ function SecModal({
             <AtText
               type="subtitle"
               sentence={item ? "l|:" + item.name : title}
+              css="pr-9"
             />
           </Modal.Title>
           <div className="absolute top-0 right-0 pt-[.75rem] pr-[.75rem] pl-[1rem] pb-[1rem]">
@@ -230,7 +278,7 @@ function SecModal({
           id: userScp.histPurchase.length.toString(),
           purchase: purchaseScp,
         });
-        alert("A");
+        // alert("A");
       } else {
         userScp.histPurchase = [];
         purchaseScp.id = "0";
@@ -245,6 +293,8 @@ function SecModal({
     usersSco.push(user);
     console.log(usersSco);
     localStorage.setItem("users", JSON.stringify(usersSco));
+    setShow(false);
+    setShowEx(false);
   }
 
   return (
@@ -343,7 +393,7 @@ function SecModal({
                   </div>
                 </>
               ) : (
-                <ElCartList carts={carts} />
+                <ElCartList carts={carts} setShow={setShow} />
               )}
             </Modal.Body>
             <Modal.Footer className="border-0 flex flex-col !bg-slate-700">
@@ -411,7 +461,7 @@ function SecModal({
             <Modal.Header closeButton>
               <Modal.Title>Modal heading</Modal.Title>
             </Modal.Header>
-            {user ? <SecProfile user={user} /> : <></>}
+            {userPr ? <SecProfile user={userPr} /> : <></>}
             <Modal.Footer>
               <Button variant="secondary" onClick={() => setShow(false)}>
                 Close

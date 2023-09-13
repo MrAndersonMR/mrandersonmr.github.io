@@ -34,14 +34,19 @@ export type ThemeStyle = {
         | "danger"
         | "warning"
         | "primary"
-        | "seconary";
+        | "secondary";
     };
     head: {
       css: string;
     };
   };
   definitions: {
-    navbar: { additionalButtons: string[] };
+    navbar: { additionalButtons: string[]; links: any[] };
+    grid: { filter: string };
+    footer: {
+      colNum: number;
+      links: string[];
+    };
   };
   images: {
     bg: {
@@ -125,7 +130,7 @@ export type ThemeStyle = {
   form: {
     main: {
       color: string[];
-      bg: string;
+      bg: string[];
       radius: string;
       size: string;
       shadow: string;
@@ -134,7 +139,7 @@ export type ThemeStyle = {
     };
     secondary: {
       color: string[];
-      bg: string;
+      bg: string[];
       radius: string;
       size: string;
       shadow: string;
@@ -386,6 +391,7 @@ export type Product = {
   type: string;
   price: number;
   description: string;
+  labels: string[];
   categories: string[];
   colors?: string[];
   color?: string;

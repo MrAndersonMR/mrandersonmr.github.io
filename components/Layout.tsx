@@ -34,32 +34,31 @@ function Layout({ children, title = "This is the default title" }: Props) {
           title="CZAR+"
           variant={"dark"}
           tLogo={
-            <h3 className="font-['Jost'] !mb-0 rounded-lg p-2 bg-white mx-3">
-              <span
-                className="inline-block scale-x-[-1]"
-                style={{ filter: "fliph" }}
-              >
-                C
-              </span>
-              ZAR+
-            </h3>
+            // <h3 className="font-['Jost'] !mb-0 rounded-lg p-2 bg-white mx-3">
+            //   <span
+            //     className="inline-block scale-x-[-1]"
+            //     style={{ filter: "fliph" }}
+            //   >
+            //     C
+            //   </span>
+            //   ZAR+
+            // </h3>
+            themeStyle.texts.logo
           }
           // collapse={true}
           fixed={
             themeStyle.layouts ? themeStyle.layouts.navbar.placement : undefined
           }
           // expand={"xxl"}
-          bg={
-            themeStyle.layouts ? themeStyle.layouts.navbar.variant : undefined
-          }
+          bg={themeStyle.navbar ? themeStyle.navbar.bg : undefined}
           iconsNames={
             themeStyle.layouts ? themeStyle.layouts.navbar.iconsName : []
           }
           // iconsTypes={["ri", "ri"]}
           // icons={["RiHomeSmile2Fill", "RiHomeHeartFill"]}
           // tIcons={["Anderson", "Mendes"]}
-          links={["home", ["about", "team", "brazil"]]}
-          hrefs={["anderson", ["", "ribeiro"]]}
+          links={themeStyle.definitions.navbar.links}
+          hrefs={["", ["", ""]]}
           additional={
             themeStyle.definitions
               ? themeStyle.definitions.navbar.additionalButtons
@@ -74,24 +73,31 @@ function Layout({ children, title = "This is the default title" }: Props) {
       <span>Im here to stay (Footer)</span>
     </footer> */}
       {themeStyle.layouts && themeStyle.layouts.base.includes("footer") ? (
-        <SecFooter
-          title={themeStyle.texts.title}
-          colNum={1}
-          colTitles="Paris"
-          // colTitles={["Paris", "New York", "Tokyo"]}
-          colLinks={["anderson", "mendes", "ribeiro"]}
-          colHrefs={["anderson", "mendes", "ribeiro"]}
-          // colLinks={[
-          //   ["anderson", "mendes", "ribeiro"],
-          //   ["carlos", "henrique", "lopes", "zansavio"],
-          //   ["daniela", "gomes"],
-          // ]}
-          // colHrefs={[
-          //   ["anderson", "mendes", "ribeiro"],
-          //   ["carlos", "henrique", "lopes", "zansavio"],
-          //   ["daniela", "gomes"],
-          // ]}
-        />
+        <div
+          className={[
+            styleTheme("secondaryComponent", themeStyle.secondaryComponent.bg),
+            "pt-6",
+          ].join(" ")}
+        >
+          <SecFooter
+            title={themeStyle.texts.logo}
+            colNum={themeStyle.definitions.footer.colNum}
+            colTitles={themeStyle.texts.title}
+            // colTitles={["Paris", "New York", "Tokyo"]}
+            colLinks={themeStyle.definitions.footer.links}
+            colHrefs={["", "", ""]}
+            // colLinks={[
+            //   ["anderson", "mendes", "ribeiro"],
+            //   ["carlos", "henrique", "lopes", "zansavio"],
+            //   ["daniela", "gomes"],
+            // ]}
+            // colHrefs={[
+            //   ["anderson", "mendes", "ribeiro"],
+            //   ["carlos", "henrique", "lopes", "zansavio"],
+            //   ["daniela", "gomes"],
+            // ]}
+          />
+        </div>
       ) : undefined}
       <SecCzarplusPortolios />
     </div>

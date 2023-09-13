@@ -34,8 +34,28 @@
   background-color: rgb(34 197 94) !important;
 }
 
-.card-img {
-  @media only screen and (max-width: 600px) { width: 40%; }
+@media only screen and (min-width: 768px) {
+  .card-img { width: 40% !important; }
+}
+
+@media screen {
+  #printSection {
+      display: none;
+  }
+}
+
+@media print {
+  body * {
+    visibility:hidden;
+  }
+  #printSection, #printSection * {
+    visibility:visible;
+  }
+  #printSection {
+    position:absolute;
+    left:0;
+    top:0;
+  }
 }
 
 /* animations */

@@ -136,11 +136,17 @@ function ElShowcase({ item = undefined }: { item: any }) {
               <div key={i} className="flex items-center justify-center">
                 {i === 2 ? (
                   <h5 className="absolute mb-0 z-10 text-white">
-                    {images.length > 3 ? "+" + (images.length - 3) : undefined}
+                    <AtText
+                      sentence={
+                        images.length > 3
+                          ? "l|:+" + (images.length - 3)
+                          : "blankSpace"
+                      }
+                    />
                   </h5>
                 ) : undefined}
                 <AtImage
-                  src={image}
+                  src={[image]}
                   width={50}
                   height={50}
                   css={
@@ -190,7 +196,9 @@ function ElShowcase({ item = undefined }: { item: any }) {
             tooltips={[
               undefined,
               undefined,
-              color === "" || size === "" ? (
+              !user ? (
+                <AtText type="legend" sentence={"messageNoLogged"} />
+              ) : color === "" || size === "" ? (
                 <AtText type="legend" sentence={"mustSelectSizeColor"} />
               ) : undefined,
             ]}
@@ -206,12 +214,16 @@ function ElShowcase({ item = undefined }: { item: any }) {
                 updateCart();
               },
             ]}
+            css="text-ellipsis"
           />
 
           <div className="flex lg:flex-row flex-col lg:gap-0 gap-4 items-center my-4">
             <div className="w-[100%]">
-              <AtText sentence={"description"} />
-              <div className="flex items-center my-2">
+              <AtText
+                sentence={"description"}
+                css="!text-center sm:!text-left"
+              />
+              <div className="flex flex-col md:flex-row items-center my-2">
                 <AtText sentence={"usersComments"} type="text" css="mr-2" />
                 <AtBadge
                   bg={"dark"}
@@ -225,24 +237,27 @@ function ElShowcase({ item = undefined }: { item: any }) {
                   css="mr-2"
                 />
               </div>
-              <AtTable
-                title={"description"}
-                item={item}
-                type="feature"
-                // variant={"dark"}
-                headers={["l|:Anderson", "l|:Mendes", "l|:Ribeiro"]}
-              />
+              <div className="w-[100vw] sm:!w-auto">
+                <AtTable
+                  title={"description"}
+                  item={item}
+                  type="feature"
+                  // variant={"dark"}
+                  headers={["label", "feature", "infos"]}
+                />
+              </div>
             </div>
-            <div>
+            <div className="flex justify-center">
               {/* <iframe
                 width="auto"
                 height="45%"
                 src="https://player.vimeo.com/video/403777528"
               /> */}
               <iframe
-                width="auto"
+                // width="auto"
                 height="45%"
                 src="https://player.vimeo.com/video/425837205"
+                className="max-w-[90%]"
               />
               {/* <iframe
                 width="auto"
@@ -261,21 +276,22 @@ function ElShowcase({ item = undefined }: { item: any }) {
               /> */}
             </div>
           </div>
-          <AtText sentence={"comments"} css="mb-3" />
-          <AtTable
-            title={"comments"}
-            item={item}
-            type="comment"
-            headers={["user", "comment", "date"]}
-            css="!bg-slate-100"
-            click={
-              !showCommentForm
-                ? () => {
-                    verifyLogged();
-                  }
-                : undefined
-            }
-          />
+          <AtText sentence={"comments"} css="mb-3 !text-center sm:!text-left" />
+          <div className="w-[100vw] sm:!w-auto">
+            <AtTable
+              title={"comments"}
+              item={item}
+              type="comment"
+              headers={["user", "comment", "date"]}
+              click={
+                !showCommentForm && user
+                  ? () => {
+                      verifyLogged();
+                    }
+                  : undefined
+              }
+            />
+          </div>
           {showCommentForm ? (
             <AtForm
               value={comment}
@@ -285,7 +301,13 @@ function ElShowcase({ item = undefined }: { item: any }) {
               placeholder="yourComment"
               iconName={["comment", "close"]}
               change={(e: any) => setComment(e.target.value)}
-              click={[() => updateComments(), () => setShowCommentForm(false)]}
+              click={[
+                () => {
+                  updateComments();
+                  setComment("");
+                },
+                () => setShowCommentForm(false),
+              ]}
             />
           ) : (
             <></>

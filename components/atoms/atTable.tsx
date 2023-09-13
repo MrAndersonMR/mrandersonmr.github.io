@@ -8,6 +8,7 @@ import AtButton from "./atButton";
 // import { LanguageContext } from "../../context/languageContext";
 import AtText from "./atText";
 import { ThemeStyleContext } from "../../context/themeStyleContext";
+import { styleTheme } from "../config/stylesConfig";
 
 function AtTable({
   item = undefined,
@@ -38,20 +39,34 @@ function AtTable({
           {item &&
             item.features.map((e, i) => {
               {
-                return e.split("|").map((p, j) => {
-                  return i === item.features.length - 1 ? (
-                    <tr>
-                      <td className="!bg-transparent border-0">
-                        <AtText sentence={"l|:" + p} />
-                      </td>
-                    </tr>
-                  ) : (
-                    <tr>
-                      <td className="!bg-transparent">
-                        <AtText sentence={"l|:" + p} />
-                      </td>
-                    </tr>
-                  );
+                return e.split("|").map((p, j, d) => {
+                  // if (j !== 0) j = j + 3;
+                  if (j % 3 === 0)
+                    return i === item.features.length - 1 ? (
+                      <tr>
+                        <td className="!bg-transparent border-0">
+                          <AtText sentence={"l|:" + d[j]} />
+                        </td>
+                        <td className="!bg-transparent border-0">
+                          <AtText sentence={"l|:" + d[j + 1]} />
+                        </td>
+                        <td className="!bg-transparent border-0">
+                          <AtText sentence={"l|:" + d[j + 2]} />
+                        </td>
+                      </tr>
+                    ) : (
+                      <tr>
+                        <td className="!bg-transparent">
+                          <AtText sentence={"l|:" + d[j]} />
+                        </td>
+                        <td className="!bg-transparent">
+                          <AtText sentence={"l|:" + d[j + 1]} />
+                        </td>
+                        <td className="!bg-transparent">
+                          <AtText sentence={"l|:" + d[j + 2]} />
+                        </td>
+                      </tr>
+                    );
                 });
               }
             })}
@@ -87,7 +102,8 @@ function AtTable({
     return [
       "p-[.75rem]",
       css,
-      "bg-" + themeStyle.secondaryComponent.bg,
+      // "bg-" + themeStyle.secondaryComponent.bg,
+      styleTheme("secondaryComponent", themeStyle.secondaryComponent.bg),
       // styleRadius("secondaryComponent", themeStyle.secondaryComponent.border),
     ].join(" ");
   }
@@ -102,7 +118,7 @@ function AtTable({
     <>
       {/* <h2 className="border-l-4 pl-2 capitalize">{labelFormat(title)}</h2> */}
       <div className={cssFormat()}>
-        <Table variant={variant} className="mb-0">
+        <Table variant={variant} responsive className="mb-0">
           <thead>
             <tr className="!bg-transparent">
               {headers.map((e, i) => {

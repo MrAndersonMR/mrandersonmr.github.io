@@ -6,10 +6,17 @@ import { LanguageContext } from "../../context/languageContext";
 
 export function monetaryFormat(value: number) {
   const [language, setLanguage] = useContext(LanguageContext);
+  if (language === "es") value = value * 350;
+
+  if (language === "pt") value = value * 5;
 
   return (
     translations("currencySign", language) +
-    (language !== "en" ? value.toFixed(2).replace(".", ",") : value.toFixed(2))
+    (language !== "en"
+      ? language === "es"
+        ? value.toFixed(0)
+        : value.toFixed(2).replace(".", ",")
+      : value.toFixed(2))
   );
 }
 

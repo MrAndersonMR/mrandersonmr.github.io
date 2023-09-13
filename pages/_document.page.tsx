@@ -91,10 +91,6 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Liu+Jian+Mao+Cao&display=swap"
-            rel="stylesheet"
-          />
-          <link
             href="https://fonts.googleapis.com/css2?family=Poltawski+Nowy&display=swap"
             rel="stylesheet"
           />
@@ -108,6 +104,14 @@ class MyDocument extends Document {
           />
           <link
             href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Meow+Script&display=swap"
             rel="stylesheet"
           />
         </Head>

@@ -609,20 +609,46 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import { ThemeStyle } from "../interfaces/index";
 
 const defaultTheme: ThemeStyle = {
-  themeName: "",
+  themeName: "czar+",
   texts: {
-    logo: "",
-    title: "l|:Almagro",
-    subtitle: "messageNoLogged",
+    logo: (
+      <h1 className={["font-[Jost] text-white m-2"].join(" ")}>
+        <span className="inline-block scale-x-[-1]" style={{ filter: "fliph" }}>
+          C
+        </span>
+        ZAR+
+      </h1>
+    ),
+    title: "l|:+54 11 5508-2980",
+    subtitle: "l|:enviame una mensaje por whatsapp | buenos aires - argentina",
     messages: [],
     labels: [],
     contacts: [],
     quotes: [],
     links: ["home"],
-    linksActions: ["lmb|messageNoLogged"],
+    linksActions: ["lmb|:messageNoLogged"],
+  },
+  layouts: {
+    base: ["navbar", "head"],
+    navbar: {
+      placement: "top",
+      iconsName: undefined,
+      variant: undefined,
+    },
+    head: {
+      css: "text-center",
+    },
   },
   definitions: {
-    navbar: { additionalButtons: ["brightness", "language", "account"] },
+    navbar: {
+      additionalButtons: [],
+      links: [],
+    },
+    grid: { filter: "" },
+    footer: {
+      colNum: 1,
+      links: [],
+    },
   },
   images: {
     bg: {
@@ -630,14 +656,14 @@ const defaultTheme: ThemeStyle = {
       radius: "diagonal",
       decoration: "",
       animation: "",
-      url: "https://images.unsplash.com/photo-1598162148064-51f41779e988?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
+      url: "https://images.unsplash.com/photo-1547499417-61a435d27cb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80", //"https://images.unsplash.com/photo-1598162148064-51f41779e988?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80",
     },
     navbar: {
       shadow: "",
-      radius: "diagonal",
+      radius: "",
       decoration: "",
       animation: "",
-      url: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1031&q=80",
+      url: "",
     },
     defaultProfile: {
       shadow: "",
@@ -671,17 +697,17 @@ const defaultTheme: ThemeStyle = {
   },
   text: {
     main: {
-      font: "Gloock",
-      size: "",
-      color: [],
+      font: "Jost",
+      size: "5xl",
+      color: ["white", "sky-500"],
       animation: "",
       shadow: "",
       decoration: "",
     },
     secondary: {
-      font: "Gloock",
+      font: "'Yanone_Kaffeesatz'",
       size: "",
-      color: [],
+      color: ["white", "sky-500"],
       animation: "",
       shadow: "",
       decoration: "",
@@ -695,7 +721,7 @@ const defaultTheme: ThemeStyle = {
       decoration: "",
     },
     sub: {
-      font: "'Nixie_One'",
+      font: "'Yanone_Kaffeesatz'",
       size: "",
       color: [],
       animation: "",
@@ -706,7 +732,7 @@ const defaultTheme: ThemeStyle = {
   form: {
     main: {
       color: [],
-      bg: "",
+      bg: [],
       size: "",
       shadow: "",
       animation: "",
@@ -715,7 +741,7 @@ const defaultTheme: ThemeStyle = {
     },
     secondary: {
       color: [],
-      bg: "",
+      bg: [],
       size: "",
       shadow: "",
       animation: "",
@@ -803,7 +829,7 @@ const defaultTheme: ThemeStyle = {
   },
   navbar: {
     layout: "",
-    bg: [],
+    bg: ["dark", "dark"],
     shadow: "",
     radius: "",
     decoration: "",

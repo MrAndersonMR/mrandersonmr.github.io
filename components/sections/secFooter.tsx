@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { SimpleLanguageContext } from "../../context/simpleThemeContext";
 import Icon from "../icon/icon";
+import AtText from "../atoms/atText";
 
 function SecFooter({
   title = undefined,
@@ -17,7 +18,7 @@ function SecFooter({
   colLinks?: any[];
   colHrefs?: any[];
 }) {
-  const [language, setLanguage] = useContext(SimpleLanguageContext);
+  // const [language, setLanguage] = useContext(SimpleLanguageContext);
 
   return (
     <>
@@ -30,13 +31,15 @@ function SecFooter({
             Array.from(Array(colNum).keys()).map((e, i) => {
               return (
                 <Col key={i}>
-                  <h4>{colTitles[i]}</h4>
+                  <AtText sentence={colTitles[i]} />
                   <div>
                     {colLinks.length > 0
                       ? colLinks[i].map((f: any, j: number) => {
                           return (
                             <div key={j}>
-                              <Link href={colHrefs[i][j]}>{f}</Link>
+                              <Link href={colHrefs[i][j]}>
+                                <AtText sentence={f} />
+                              </Link>
                               <br />
                             </div>
                           );
@@ -49,13 +52,26 @@ function SecFooter({
           ) : (
             <Col>
               {title}
-              <h4>{colTitles}</h4>
-              <div className="flex gap-1">
+              {/* <AtText
+                type="subtitle"
+                sentence={typeof colTitles === "string" ? colTitles : ""}
+                css="capitalize"
+              /> */}
+              <div className="flex gap-1 my-2">
                 {colLinks.map((e: any, i: number) => {
                   return (
-                    <div key={i} className="gap-1">
-                      <Link href={colHrefs[i]}>{e}</Link>
-                      {i !== colLinks.length - 1 ? " |" : undefined}
+                    <div key={i} className="gap-1 my-2">
+                      <Link key={i} href={colHrefs[i]}>
+                        <AtText
+                          sentence={e}
+                          css={
+                            i !== colLinks.length - 1
+                              ? "pr-1 border-r-2 border-black"
+                              : ""
+                          }
+                        />
+                      </Link>
+                      {/* {i !== colLinks.length - 1 ? " |" : undefined} */}
                     </div>
                   );
                 })}

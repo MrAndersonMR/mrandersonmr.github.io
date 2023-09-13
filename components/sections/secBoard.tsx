@@ -47,8 +47,8 @@ function SecBoard({
               // styleRadius("icon", "main", themeStyle.icon.main.radius),
             ].join(" ")}
           >
-            <AtIcon type="main" name={"shop"} size="24px" />
-            {/* {Icon(iconType, icon, iconSize)} */}
+            <AtIcon type="main" iconType={iconType} icon={icon} size="24px" />
+            {/* {Icon(iconType, icon, iconSize)} name={"shop"} */}
           </div>
           <div>
             <AtText type="subtitle" sentence={title} />

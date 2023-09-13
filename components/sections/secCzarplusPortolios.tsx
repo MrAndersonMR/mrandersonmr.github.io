@@ -1,9 +1,13 @@
 import React, { useContext, useState } from "react";
 import { ThemeStyle } from "../../interfaces";
-import { OverlayTrigger, Popover } from "react-bootstrap";
+import { Button, Modal, OverlayTrigger, Popover } from "react-bootstrap";
 import { ThemeStyleContext } from "../../context/themeStyleContext";
 import AtButton from "../atoms/atButton";
 import AtImage from "../atoms/atImage";
+import AtText from "../atoms/atText";
+import { styleRadius } from "../config/stylesConfig";
+import AtIcon from "../atoms/atIcon";
+import Router from "next/router";
 
 const millcayacTheme: ThemeStyle = {
   themeName: "",
@@ -11,10 +15,16 @@ const millcayacTheme: ThemeStyle = {
     logo: (
       <>
         <AtImage
-          src="./mountDay.svg"
-          width={100}
-          height={100}
-          css="!rounded-0"
+          src={["./mountDay.svg", "./mountNite.svg"]}
+          width={30}
+          height={30}
+          css="!rounded-0 select-none"
+          invert={true}
+        />
+        <AtText
+          type="subtitle"
+          sentence={"l|:millcayac"}
+          css="capitalize mx-3 select-none"
         />
       </>
     ),
@@ -24,7 +34,7 @@ const millcayacTheme: ThemeStyle = {
     labels: [],
     contacts: [],
     quotes: [],
-    links: ["lmb|messageNoLogged"],
+    links: ["nb|:about", ["nb|:team", "contact"]],
     linksActions: ["lmb|:messageNoLogged"],
   },
   layouts: {
@@ -47,6 +57,14 @@ const millcayacTheme: ThemeStyle = {
         "shop",
         "account",
       ],
+      links: ["home", ["about", "team", "brazil"]],
+    },
+    grid: {
+      filter: "millcayac",
+    },
+    footer: {
+      colNum: 1,
+      links: ["team", "about", "contact"],
     },
   },
   images: {
@@ -98,7 +116,7 @@ const millcayacTheme: ThemeStyle = {
     main: {
       font: "Gloock",
       size: "5xl",
-      color: [],
+      color: ["amber-500"],
       animation: "",
       shadow: "",
       decoration: "",
@@ -106,10 +124,10 @@ const millcayacTheme: ThemeStyle = {
     secondary: {
       font: "Gloock",
       size: "",
-      color: [],
+      color: ["yellow-500"],
       animation: "",
       shadow: "",
-      decoration: "",
+      decoration: "my-1",
     },
     base: {
       font: "'Yanone_Kaffeesatz'",
@@ -130,8 +148,8 @@ const millcayacTheme: ThemeStyle = {
   },
   form: {
     main: {
-      color: [],
-      bg: "",
+      color: ["black", "black"],
+      bg: [],
       size: "",
       shadow: "",
       animation: "",
@@ -139,8 +157,8 @@ const millcayacTheme: ThemeStyle = {
       radius: "full",
     },
     secondary: {
-      color: [],
-      bg: "",
+      color: ["black", "white"],
+      bg: [],
       size: "",
       shadow: "",
       animation: "",
@@ -186,7 +204,7 @@ const millcayacTheme: ThemeStyle = {
   },
   secondaryComponent: {
     layout: "",
-    bg: [],
+    bg: ["slate-300", "slate-500"],
     size: "",
     shadow: "",
     radius: "diagonal",
@@ -228,7 +246,7 @@ const millcayacTheme: ThemeStyle = {
   },
   navbar: {
     layout: "",
-    bg: [],
+    bg: ["primary", "secondary"],
     shadow: "",
     radius: "",
     decoration: "",
@@ -239,38 +257,57 @@ const millcayacTheme: ThemeStyle = {
 const drDogoTheme: ThemeStyle = {
   themeName: "",
   texts: {
-    logo: "",
+    logo: (
+      <AtText
+        type="title"
+        sentence="l|:dr. dogo"
+        css="capitalize !text-[2rem]"
+      />
+    ),
     title: "l|:dr. dogo",
     subtitle: "l|:petshop y veterinaria",
     messages: [],
     labels: [],
     contacts: [],
     quotes: [],
-    links: ["lmb|messageNoLogged"],
+    links: ["lmb|:messageNoLogged"],
     linksActions: ["lmb|:messageNoLogged"],
+  },
+  layouts: {
+    base: ["navbar", "head", "list"],
+    navbar: {
+      placement: undefined,
+      iconsName: undefined,
+      variant: "dark",
+    },
+    head: {
+      css: "",
+    },
   },
   definitions: {
     navbar: {
-      additionalButtons: [
-        "search",
-        "brightness",
-        "language",
-        "shop",
-        "account",
-      ],
+      additionalButtons: ["brightness", "language", "shop", "account"],
+      links: [],
+    },
+    grid: {
+      filter: "drDogo",
+    },
+    footer: {
+      colNum: 1,
+      links: ["about", "team", "contacts"],
     },
   },
   images: {
     bg: {
       shadow: "",
-      radius: "diagonal",
+      radius: "full",
       decoration: "",
       animation: "",
       url: undefined,
     },
     navbar: {
       shadow: "",
-      radius: "none",
+      radius: "full",
       decoration: "",
       animation: "",
       url: "https://images.unsplash.com/photo-1589652717406-1c69efaf1ff8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
@@ -287,7 +324,7 @@ const drDogoTheme: ThemeStyle = {
     main: {
       color: [],
       bg: "",
-      radius: "diagonal",
+      radius: "lg",
       shadow: "",
       size: "",
       hover: "",
@@ -297,7 +334,7 @@ const drDogoTheme: ThemeStyle = {
     secondary: {
       color: [],
       bg: "",
-      radius: "full",
+      radius: "lg",
       shadow: "",
       size: "",
       hover: "",
@@ -308,22 +345,22 @@ const drDogoTheme: ThemeStyle = {
   text: {
     main: {
       font: "'Suez_One'",
-      size: "7xl",
+      size: "8xl",
       color: [],
       animation: "",
       shadow: "",
       decoration: "",
     },
     secondary: {
-      font: "Gloock",
-      size: "",
+      font: "Artifika",
+      size: "3xl",
       color: [],
       animation: "",
       shadow: "",
       decoration: "",
     },
     base: {
-      font: "'Yanone_Kaffeesatz'",
+      font: "Fredoka",
       size: "",
       color: [],
       animation: "",
@@ -331,7 +368,7 @@ const drDogoTheme: ThemeStyle = {
       decoration: "",
     },
     sub: {
-      font: "'Nixie_One'",
+      font: "'PT_Serif_Caption'",
       size: "",
       color: [],
       animation: "",
@@ -342,7 +379,7 @@ const drDogoTheme: ThemeStyle = {
   form: {
     main: {
       color: [],
-      bg: "",
+      bg: [],
       size: "",
       shadow: "",
       animation: "",
@@ -351,7 +388,7 @@ const drDogoTheme: ThemeStyle = {
     },
     secondary: {
       color: [],
-      bg: "",
+      bg: [],
       size: "",
       shadow: "",
       animation: "",
@@ -362,7 +399,7 @@ const drDogoTheme: ThemeStyle = {
   },
   icon: {
     main: {
-      style: "thin",
+      style: "outline",
       color: [],
       size: "",
       bg: "lime-500",
@@ -371,7 +408,7 @@ const drDogoTheme: ThemeStyle = {
       animation: "",
     },
     secondary: {
-      style: "thin",
+      style: "outline",
       color: [],
       size: "",
       bg: "",
@@ -382,7 +419,7 @@ const drDogoTheme: ThemeStyle = {
   },
   image: {
     shadow: "",
-    radius: "diagonal",
+    radius: "full",
     decoration: "",
     animation: "",
   },
@@ -439,7 +476,7 @@ const drDogoTheme: ThemeStyle = {
   },
   navbar: {
     layout: "",
-    bg: [],
+    bg: ["secondary", "dark"],
     shadow: "",
     radius: "",
     decoration: "",
@@ -460,6 +497,17 @@ const madeInSanTelmoTheme: ThemeStyle = {
     links: ["lmb|messageNoLogged"],
     linksActions: ["lmb|:messageNoLogged"],
   },
+  layouts: {
+    base: ["navbar", "head", "list"],
+    navbar: {
+      placement: undefined,
+      iconsName: undefined,
+      variant: undefined,
+    },
+    head: {
+      css: "",
+    },
+  },
   definitions: {
     navbar: {
       additionalButtons: [
@@ -469,6 +517,14 @@ const madeInSanTelmoTheme: ThemeStyle = {
         "shop",
         "account",
       ],
+      links: ["home", ["about", "team", "brazil"]],
+    },
+    grid: {
+      filter: "sanTelmo",
+    },
+    footer: {
+      colNum: 1,
+      links: ["team", "about", "contact"],
     },
   },
   images: {
@@ -498,7 +554,7 @@ const madeInSanTelmoTheme: ThemeStyle = {
     main: {
       color: [],
       bg: "",
-      radius: "diagonal",
+      radius: "sm",
       shadow: "",
       size: "",
       hover: "",
@@ -508,7 +564,7 @@ const madeInSanTelmoTheme: ThemeStyle = {
     secondary: {
       color: [],
       bg: "",
-      radius: "full",
+      radius: "sm",
       shadow: "",
       size: "",
       hover: "",
@@ -518,6 +574,14 @@ const madeInSanTelmoTheme: ThemeStyle = {
   },
   text: {
     main: {
+      font: "'Yeseva_One'",
+      size: "6xl",
+      color: [],
+      animation: "",
+      shadow: "",
+      decoration: "",
+    },
+    secondary: {
       font: "'Modern_Antiqua'",
       size: "",
       color: [],
@@ -525,16 +589,8 @@ const madeInSanTelmoTheme: ThemeStyle = {
       shadow: "",
       decoration: "",
     },
-    secondary: {
-      font: "Gloock",
-      size: "",
-      color: [],
-      animation: "",
-      shadow: "",
-      decoration: "",
-    },
     base: {
-      font: "'Yanone_Kaffeesatz'",
+      font: "'Poltawski_Nowy'",
       size: "",
       color: [],
       animation: "",
@@ -542,7 +598,7 @@ const madeInSanTelmoTheme: ThemeStyle = {
       decoration: "",
     },
     sub: {
-      font: "'Nixie_One'",
+      font: "'Libre_Bodoni'",
       size: "",
       color: [],
       animation: "",
@@ -553,7 +609,7 @@ const madeInSanTelmoTheme: ThemeStyle = {
   form: {
     main: {
       color: [],
-      bg: "",
+      bg: [],
       size: "",
       shadow: "",
       animation: "",
@@ -562,7 +618,7 @@ const madeInSanTelmoTheme: ThemeStyle = {
     },
     secondary: {
       color: [],
-      bg: "",
+      bg: [],
       size: "",
       shadow: "",
       animation: "",
@@ -593,7 +649,7 @@ const madeInSanTelmoTheme: ThemeStyle = {
   },
   image: {
     shadow: "",
-    radius: "diagonal",
+    radius: "none",
     decoration: "",
     animation: "",
   },
@@ -659,27 +715,49 @@ const madeInSanTelmoTheme: ThemeStyle = {
 };
 
 const trebol4hojasTheme: ThemeStyle = {
-  themeName: "",
+  themeName: "trebol4hojas",
   texts: {
-    logo: "",
+    logo: (
+      <>
+        <AtIcon iconType="fa6" icon="FaClover" size="32px" css="mr-2" />
+        <AtText
+          type="title"
+          sentence="l|:trebol 4 hojas"
+          css="text-[2rem] capitalize"
+        />
+      </>
+    ),
     title: "l|:trebol 4 hojas",
-    subtitle: "l|:farmacia",
+    subtitle: "pharmacy",
     messages: [],
     labels: [],
     contacts: [],
     quotes: [],
-    links: ["lmb|messageNoLogged"],
-    linksActions: ["lmb|:messageNoLogged"],
+    links: [""],
+    linksActions: [""],
+  },
+  layouts: {
+    base: ["navbar", "head", "list", "footer"],
+    navbar: {
+      placement: "top",
+      iconsName: undefined,
+      variant: undefined,
+    },
+    head: {
+      css: "",
+    },
   },
   definitions: {
     navbar: {
-      additionalButtons: [
-        "search",
-        "brightness",
-        "language",
-        "shop",
-        "account",
-      ],
+      additionalButtons: ["brightness", "language", "shop", "account"],
+      links: [],
+    },
+    grid: {
+      filter: "trebol4hojas",
+    },
+    footer: {
+      colNum: 1,
+      links: ["team", "about", "contact"],
     },
   },
   images: {
@@ -695,7 +773,7 @@ const trebol4hojasTheme: ThemeStyle = {
       radius: "diagonal",
       decoration: "",
       animation: "",
-      url: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1031&q=80",
+      url: "",
     },
     defaultProfile: {
       shadow: "",
@@ -709,7 +787,7 @@ const trebol4hojasTheme: ThemeStyle = {
     main: {
       color: [],
       bg: "",
-      radius: "diagonal",
+      radius: "full",
       shadow: "",
       size: "",
       hover: "",
@@ -730,22 +808,22 @@ const trebol4hojasTheme: ThemeStyle = {
   text: {
     main: {
       font: "'Libre_Bodoni'",
-      size: "",
+      size: "6xl",
       color: [],
       animation: "",
       shadow: "",
       decoration: "",
     },
     secondary: {
-      font: "Gloock",
-      size: "",
+      font: "'Petit_Formal_Script'",
+      size: "4xl",
       color: [],
       animation: "",
       shadow: "",
       decoration: "",
     },
     base: {
-      font: "'Yanone_Kaffeesatz'",
+      font: "'Nixie_One'",
       size: "",
       color: [],
       animation: "",
@@ -753,7 +831,7 @@ const trebol4hojasTheme: ThemeStyle = {
       decoration: "",
     },
     sub: {
-      font: "'Nixie_One'",
+      font: "'Meow_Script'",
       size: "",
       color: [],
       animation: "",
@@ -764,7 +842,7 @@ const trebol4hojasTheme: ThemeStyle = {
   form: {
     main: {
       color: [],
-      bg: "",
+      bg: [],
       size: "",
       shadow: "",
       animation: "",
@@ -773,7 +851,7 @@ const trebol4hojasTheme: ThemeStyle = {
     },
     secondary: {
       color: [],
-      bg: "",
+      bg: [],
       size: "",
       shadow: "",
       animation: "",
@@ -784,7 +862,7 @@ const trebol4hojasTheme: ThemeStyle = {
   },
   icon: {
     main: {
-      style: "thin",
+      style: "circle",
       color: [],
       size: "",
       bg: "lime-500",
@@ -793,7 +871,7 @@ const trebol4hojasTheme: ThemeStyle = {
       animation: "",
     },
     secondary: {
-      style: "thin",
+      style: "circle",
       color: [],
       size: "",
       bg: "",
@@ -861,7 +939,7 @@ const trebol4hojasTheme: ThemeStyle = {
   },
   navbar: {
     layout: "",
-    bg: [],
+    bg: ["info", "primary"],
     shadow: "",
     radius: "",
     decoration: "",
@@ -872,25 +950,44 @@ const trebol4hojasTheme: ThemeStyle = {
 const rioLumpurTheme: ThemeStyle = {
   themeName: "",
   texts: {
-    logo: "",
+    logo: (
+      <AtText
+        type="title"
+        sentence="l|:rio-lumpur"
+        css="capitalize !text-[2rem]"
+      />
+    ),
     title: "l|:rio-lumpur",
     subtitle: "l|:brazilian-malaysian gastronomy",
     messages: [],
     labels: [],
     contacts: [],
     quotes: [],
-    links: ["lmb|messageNoLogged"],
-    linksActions: ["lmb|:messageNoLogged"],
+    links: [""],
+    linksActions: [""],
+  },
+  layouts: {
+    base: ["navbar", "head", "filter", "list", "footer"],
+    navbar: {
+      placement: "bottom",
+      iconsName: undefined,
+      variant: undefined,
+    },
+    head: {
+      css: "",
+    },
   },
   definitions: {
     navbar: {
-      additionalButtons: [
-        "search",
-        "brightness",
-        "language",
-        "shop",
-        "account",
-      ],
+      additionalButtons: ["brightness", "language", "shop", "account"],
+      links: [],
+    },
+    grid: {
+      filter: "rioLumpur",
+    },
+    footer: {
+      colNum: 1,
+      links: [],
     },
   },
   images: {
@@ -899,28 +996,28 @@ const rioLumpurTheme: ThemeStyle = {
       radius: "diagonal",
       decoration: "",
       animation: "",
-      url: "https://images.unsplash.com/photo-1601106315698-ee39716dd442?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+      url: "v|:https://player.vimeo.com/video/702458133?autoplay=1&muted=1&showinfo=0&controls=0&playlist=702458133&loop=1",
     },
     navbar: {
       shadow: "",
-      radius: "diagonal",
+      radius: "",
       decoration: "",
       animation: "",
-      url: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1031&q=80",
+      url: "",
     },
     defaultProfile: {
       shadow: "",
       radius: "full",
       decoration: "",
       animation: "fade-in",
-      url: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1031&q=80",
+      url: "https://images.unsplash.com/photo-1544502062-f82887f03d1c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1559&q=80",
     },
   },
   button: {
     main: {
       color: [],
       bg: "",
-      radius: "diagonal",
+      radius: "lg",
       shadow: "",
       size: "",
       hover: "",
@@ -930,7 +1027,7 @@ const rioLumpurTheme: ThemeStyle = {
     secondary: {
       color: [],
       bg: "",
-      radius: "full",
+      radius: "lg",
       shadow: "",
       size: "",
       hover: "",
@@ -940,23 +1037,23 @@ const rioLumpurTheme: ThemeStyle = {
   },
   text: {
     main: {
-      font: "Hurricane",
-      size: "7xl",
-      color: [],
+      font: "'Petit_Formal_Script'",
+      size: "6xl",
+      color: ["green-500", "yellow-500"],
       animation: "",
       shadow: "",
       decoration: "",
     },
     secondary: {
-      font: "Tauri",
+      font: "'Yanone_Kaffeesatz'",
       size: "",
-      color: [],
+      color: ["yellow-500"],
       animation: "",
       shadow: "",
       decoration: "",
     },
     base: {
-      font: "'Yanone_Kaffeesatz'",
+      font: "Prata",
       size: "",
       color: [],
       animation: "",
@@ -964,7 +1061,7 @@ const rioLumpurTheme: ThemeStyle = {
       decoration: "",
     },
     sub: {
-      font: "'Nixie_One'",
+      font: "'Meow_Script'",
       size: "",
       color: [],
       animation: "",
@@ -974,8 +1071,8 @@ const rioLumpurTheme: ThemeStyle = {
   },
   form: {
     main: {
-      color: [],
-      bg: "",
+      color: ["black", "black"],
+      bg: [],
       size: "",
       shadow: "",
       animation: "",
@@ -983,8 +1080,8 @@ const rioLumpurTheme: ThemeStyle = {
       radius: "full",
     },
     secondary: {
-      color: [],
-      bg: "",
+      color: ["black", "black"],
+      bg: [],
       size: "",
       shadow: "",
       animation: "",
@@ -995,7 +1092,7 @@ const rioLumpurTheme: ThemeStyle = {
   },
   icon: {
     main: {
-      style: "thin",
+      style: "rounded",
       color: [],
       size: "",
       bg: "lime-500",
@@ -1004,7 +1101,7 @@ const rioLumpurTheme: ThemeStyle = {
       animation: "",
     },
     secondary: {
-      style: "thin",
+      style: "circle",
       color: [],
       size: "",
       bg: "",
@@ -1072,7 +1169,7 @@ const rioLumpurTheme: ThemeStyle = {
   },
   navbar: {
     layout: "",
-    bg: [],
+    bg: ["warning", "danger"],
     shadow: "",
     radius: "",
     decoration: "",
@@ -1085,13 +1182,24 @@ const hostelSdETheme: ThemeStyle = {
   texts: {
     logo: "",
     title: "l|:hostel santiago del estero",
-    subtitle: "l|:de las termas para el mondo",
+    subtitle: "l|:de las termas para el mundo",
     messages: [],
     labels: [],
     contacts: [],
     quotes: [],
     links: ["lmb|messageNoLogged"],
     linksActions: ["lmb|:messageNoLogged"],
+  },
+  layouts: {
+    base: ["navbar", "head", "list"],
+    navbar: {
+      placement: undefined,
+      iconsName: undefined,
+      variant: undefined,
+    },
+    head: {
+      css: "",
+    },
   },
   definitions: {
     navbar: {
@@ -1102,6 +1210,14 @@ const hostelSdETheme: ThemeStyle = {
         "shop",
         "account",
       ],
+      links: [],
+    },
+    grid: {
+      filter: "hostelSantiagoDelEstero",
+    },
+    footer: {
+      colNum: 1,
+      links: ["team", "about", "contact"],
     },
   },
   images: {
@@ -1131,7 +1247,7 @@ const hostelSdETheme: ThemeStyle = {
     main: {
       color: [],
       bg: "",
-      radius: "diagonal",
+      radius: "lg",
       shadow: "",
       size: "",
       hover: "",
@@ -1141,7 +1257,7 @@ const hostelSdETheme: ThemeStyle = {
     secondary: {
       color: [],
       bg: "",
-      radius: "full",
+      radius: "sm",
       shadow: "",
       size: "",
       hover: "",
@@ -1151,23 +1267,23 @@ const hostelSdETheme: ThemeStyle = {
   },
   text: {
     main: {
-      font: "Elsie",
-      size: "",
+      font: "'Poltawski_Nowy'",
+      size: "5xl",
       color: [],
       animation: "",
       shadow: "",
       decoration: "",
     },
     secondary: {
-      font: "Gloock",
-      size: "",
+      font: "Elsie",
+      size: "2xl",
       color: [],
       animation: "",
       shadow: "",
       decoration: "",
     },
     base: {
-      font: "'Yanone_Kaffeesatz'",
+      font: "'Libre_Bodoni'",
       size: "",
       color: [],
       animation: "",
@@ -1175,7 +1291,7 @@ const hostelSdETheme: ThemeStyle = {
       decoration: "",
     },
     sub: {
-      font: "'Nixie_One'",
+      font: "'Modern_Antiqua'",
       size: "",
       color: [],
       animation: "",
@@ -1186,7 +1302,7 @@ const hostelSdETheme: ThemeStyle = {
   form: {
     main: {
       color: [],
-      bg: "",
+      bg: [],
       size: "",
       shadow: "",
       animation: "",
@@ -1195,7 +1311,7 @@ const hostelSdETheme: ThemeStyle = {
     },
     secondary: {
       color: [],
-      bg: "",
+      bg: [],
       size: "",
       shadow: "",
       animation: "",
@@ -1226,7 +1342,7 @@ const hostelSdETheme: ThemeStyle = {
   },
   image: {
     shadow: "",
-    radius: "diagonal",
+    radius: "lg",
     decoration: "",
     animation: "",
   },
@@ -1304,6 +1420,17 @@ const vienaInstituteTheme: ThemeStyle = {
     links: ["lmb|messageNoLogged"],
     linksActions: ["lmb|:messageNoLogged"],
   },
+  layouts: {
+    base: ["navbar", "head", "list"],
+    navbar: {
+      placement: undefined,
+      iconsName: undefined,
+      variant: undefined,
+    },
+    head: {
+      css: "",
+    },
+  },
   definitions: {
     navbar: {
       additionalButtons: [
@@ -1313,6 +1440,14 @@ const vienaInstituteTheme: ThemeStyle = {
         "shop",
         "account",
       ],
+      links: [],
+    },
+    grid: {
+      filter: "institutoViena",
+    },
+    footer: {
+      colNum: 1,
+      links: ["team", "about", "contact"],
     },
   },
   images: {
@@ -1342,7 +1477,7 @@ const vienaInstituteTheme: ThemeStyle = {
     main: {
       color: [],
       bg: "",
-      radius: "diagonal",
+      radius: "sm",
       shadow: "",
       size: "",
       hover: "",
@@ -1352,7 +1487,7 @@ const vienaInstituteTheme: ThemeStyle = {
     secondary: {
       color: [],
       bg: "",
-      radius: "full",
+      radius: "sm",
       shadow: "",
       size: "",
       hover: "",
@@ -1363,22 +1498,22 @@ const vienaInstituteTheme: ThemeStyle = {
   text: {
     main: {
       font: "Economica",
-      size: "",
-      color: [],
+      size: "8xl",
+      color: ["red-500", "white"],
       animation: "",
       shadow: "",
       decoration: "",
     },
     secondary: {
-      font: "Gloock",
-      size: "",
-      color: [],
+      font: "Syne",
+      size: "3xl",
+      color: ["white", "red-500"],
       animation: "",
       shadow: "",
       decoration: "",
     },
     base: {
-      font: "'Yanone_Kaffeesatz'",
+      font: "Prata",
       size: "",
       color: [],
       animation: "",
@@ -1386,7 +1521,7 @@ const vienaInstituteTheme: ThemeStyle = {
       decoration: "",
     },
     sub: {
-      font: "'Nixie_One'",
+      font: "'M_PLUS_Code_Latin'",
       size: "",
       color: [],
       animation: "",
@@ -1397,7 +1532,7 @@ const vienaInstituteTheme: ThemeStyle = {
   form: {
     main: {
       color: [],
-      bg: "",
+      bg: [],
       size: "",
       shadow: "",
       animation: "",
@@ -1406,7 +1541,7 @@ const vienaInstituteTheme: ThemeStyle = {
     },
     secondary: {
       color: [],
-      bg: "",
+      bg: [],
       size: "",
       shadow: "",
       animation: "",
@@ -1437,7 +1572,7 @@ const vienaInstituteTheme: ThemeStyle = {
   },
   image: {
     shadow: "",
-    radius: "diagonal",
+    radius: "sm",
     decoration: "",
     animation: "",
   },
@@ -1531,6 +1666,14 @@ const augustinNutTheme: ThemeStyle = {
   definitions: {
     navbar: {
       additionalButtons: ["brightness", "language", "account"],
+      links: [],
+    },
+    grid: {
+      filter: "",
+    },
+    footer: {
+      colNum: 1,
+      links: ["team", "about", "contact"],
     },
   },
   images: {
@@ -1604,7 +1747,7 @@ const augustinNutTheme: ThemeStyle = {
       decoration: "",
     },
     sub: {
-      font: "Syne",
+      font: "'Julius_Sans_One'",
       size: "",
       color: [],
       animation: "",
@@ -1615,7 +1758,7 @@ const augustinNutTheme: ThemeStyle = {
   form: {
     main: {
       color: [],
-      bg: "",
+      bg: [],
       size: "",
       shadow: "",
       animation: "",
@@ -1624,7 +1767,7 @@ const augustinNutTheme: ThemeStyle = {
     },
     secondary: {
       color: [],
-      bg: "",
+      bg: [],
       size: "",
       shadow: "",
       animation: "",
@@ -1723,20 +1866,207 @@ const augustinNutTheme: ThemeStyle = {
 function SecCzarplusPortolios() {
   const [themeStyle, setThemeStyle] = useContext(ThemeStyleContext);
   const [position, setPosition] = useState("bottom-0");
+  const [qrShow, setQrShow] = useState(false);
 
   return (
     <>
+      {themeStyle.themeName === "czar+" ? (
+        <AtButton
+          sentence="blankSpace"
+          css="absolute bottom-0 left-0 bg-transparent border-0"
+          click={() => setQrShow(true)}
+        />
+      ) : (
+        <></>
+      )}
+      <Modal
+        show={qrShow}
+        onHide={() => setQrShow(false)}
+        backdrop="static"
+        keyboard={false}
+        className="noPrint"
+      >
+        <Modal.Header className="border-0 noPrint" closeButton>
+          <Modal.Title>CZAR+</Modal.Title>
+        </Modal.Header>
+        {/* id="printSection" */}
+
+        <Modal.Body className="flex flex-col justify-center items-center">
+          <div
+            id="printSection"
+            className="flex flex-col items-center justify-center -ml-[13rem] -mt-[5rem]"
+          >
+            <div className="flex items-center justify-center">
+              <div className="flex flex-col items-center justify-center mr-6">
+                <AtImage width={300} height={300} src={["/czarpluslogo.png"]} />
+                <div className="w-[300px]"></div>
+                <div className="my-3">
+                  <AtText
+                    type="legend"
+                    sentence="l|:página web desde $90mil + hospedaje | e-commerce personalizada para ti"
+                    css="text-4xl capitalize text-center"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col items-center justify-center">
+                <AtText
+                  type="title"
+                  sentence="l|:CZAR+"
+                  css="bg-black rounded-lg !p-2 !text-7xl"
+                />
+                <div className="w-[600px]"></div>
+                {/* <div className="my-3">
+                  <AtText
+                    type="legend"
+                    sentence="l|:Anderson Mendes Ribeiro"
+                    css="text-4xl"
+                  />
+                </div> */}
+                <div className="flex flex-col items-center justify-center">
+                  <div className="my-3">
+                    <AtText
+                      type="legend"
+                      sentence="l|:mira portifolios >>> scanea el QRcode y proba"
+                      css="text-center text-4xl text-white bg-black rounded-lg !p-2"
+                    />
+                  </div>
+                  <AtImage
+                    width={250}
+                    height={250}
+                    src={["/portfolioQR.png"]}
+                  />
+                  <AtText
+                    type="legend"
+                    sentence="l|:https://mrandersonmr.github.io/"
+                    css="text-3xl"
+                  />
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className="flex justify-center items-center">
+                <div>
+                  <AtImage
+                    width={150}
+                    height={150}
+                    src={["/qrCZARsquade.png"]}
+                  />
+                  <AtText
+                    type="legend"
+                    sentence="l|:https://czar.dev/"
+                    css="text-3xl"
+                  />
+                </div>
+                <AtText
+                  type="legend"
+                  sentence="l|:<<< mira la página oficial de CZAR+ | hacemos páginas web, e-commerce y aplicaciones - temos data center próprio - precios accesibles - hospedamos tu pagina en días | podes pagar en hasta 3 cuotas"
+                  css="text-3xl ml-4 capitalize text-center"
+                />
+              </div>
+            </div>
+            <div className="w-full border-b-2 border-black mt-3"></div>
+            <div className="flex items-center justify-center mt-3">
+              <div className="flex flex-col items-center justify-center mr-6">
+                <AtImage width={300} height={300} src={["/czarpluslogo.png"]} />
+                <div className="w-[300px]"></div>
+                <div className="my-3">
+                  <AtText
+                    type="legend"
+                    sentence="l|:página web desde $90mil + hospedaje | e-commerce personalizada para ti"
+                    css="text-4xl capitalize text-center"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col items-center justify-center">
+                <AtText
+                  type="title"
+                  sentence="l|:CZAR+"
+                  css="bg-black rounded-lg !p-2 !text-7xl"
+                />
+                <div className="w-[600px]"></div>
+                {/* <div className="my-3">
+                  <AtText
+                    type="legend"
+                    sentence="l|:Anderson Mendes Ribeiro"
+                    css="text-4xl"
+                  />
+                </div> */}
+                <div className="flex flex-col items-center justify-center">
+                  <div className="my-3">
+                    <AtText
+                      type="legend"
+                      sentence="l|:mira portifolios >>> scanea el QRcode y proba"
+                      css="text-center text-4xl text-white bg-black rounded-lg !p-2"
+                    />
+                  </div>
+                  <AtImage
+                    width={250}
+                    height={250}
+                    src={["/portfolioQR.png"]}
+                  />
+                  <AtText
+                    type="legend"
+                    sentence="l|:https://mrandersonmr.github.io/"
+                    css="text-3xl"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-center items-center">
+              <div>
+                <AtImage width={150} height={150} src={["/qrCZARsquade.png"]} />
+                <AtText
+                  type="legend"
+                  sentence="l|:https://czar.dev/"
+                  css="text-3xl"
+                />
+              </div>
+              <AtText
+                type="legend"
+                sentence="l|:<<< mira la página oficial de CZAR+ | hacemos páginas web, e-commerce y aplicaciones - temos data center próprio - precios accesibles - hospedamos tu pagina en días | podes pagar en hasta 3 cuotas"
+                css="text-3xl ml-4 capitalize text-center"
+              />
+            </div>
+          </div>
+          {/* <AtImage width={500} height={500} src={["/czarpluslogo.png"]} /> */}
+        </Modal.Body>
+        <Modal.Footer className="border-0">
+          <AtButton
+            iconType="ti"
+            icon="TiPrinter"
+            click={() => {
+              window.print(); //Router.push("/about");
+            }}
+          />
+          {/* <Button variant="secondary" onClick={() => setQrShow(false)}>
+            Close
+          </Button>
+          <Button variant="primary">Understood</Button> */}
+        </Modal.Footer>
+      </Modal>
+      {themeStyle.themeName === "czar+" && position === "bottom-0" ? (
+        <div className="absolute right-[1rem] bottom-[1.5rem] flex justify-end text-white animate-pulse">
+          <AtText sentence="l|:mis portifolios" css="text-[1rem]" />
+          &nbsp;
+          <AtIcon iconType="tb" icon="TbSquareRoundedChevronsDownFilled" />
+        </div>
+      ) : undefined}
       <OverlayTrigger
         trigger="click"
         placement={position === "bottom-0" ? "top" : "bottom"}
         overlay={
           <Popover
             id="popover-basic"
-            className={
-              "bg-transparent !flex " +
-              (position === "bottom-0" ? "!flex-col" : "!flex-col-reverse") +
-              " gap-2 backdrop-blur-sm border-[1px] border-white !rounded-full p-1"
-            }
+            className={[
+              "bg-transparent !flex",
+              position === "bottom-0" ? "!flex-col" : "!flex-col-reverse",
+              " gap-2 backdrop-blur-sm border-[1px] border-white p-1",
+              styleRadius(
+                "button",
+                themeStyle.button.secondary.radius,
+                "secondary"
+              ),
+            ].join(" ")}
           >
             <AtButton
               level="secondary"
@@ -1752,13 +2082,13 @@ function SecCzarplusPortolios() {
               iconSize="16px"
               click={() => setThemeStyle(drDogoTheme)}
             />
-            <AtButton
+            {/* <AtButton
               level="secondary"
               iconType="gi"
               icon="GiBedLamp"
               iconSize="16px"
               click={() => setThemeStyle(madeInSanTelmoTheme)}
-            />
+            /> */}
             <AtButton
               level="secondary"
               iconType="gi"
@@ -1773,7 +2103,7 @@ function SecCzarplusPortolios() {
               iconSize="16px"
               click={() => setThemeStyle(rioLumpurTheme)}
             />
-            <AtButton
+            {/* <AtButton
               level="secondary"
               iconType="fa"
               icon="FaConciergeBell"
@@ -1793,7 +2123,7 @@ function SecCzarplusPortolios() {
               icon="GiWeightScale"
               iconSize="16px"
               click={() => setThemeStyle(augustinNutTheme)}
-            />
+            /> */}
             <AtButton
               level="secondary"
               variant="secondary"
@@ -1821,11 +2151,13 @@ function SecCzarplusPortolios() {
                   <span>R</span>
                   <span className="absolute bottom-[10px] right-[10px]">+</span>
                 </h5> */}
+        {/* <AtButton sentence="l|:anderson" /> */}
+
         <h6
           className={[
             "fixed right-0",
             position,
-            "font-[Jost] text-orange-500 m-2 drop-shadow-2xl cursor-pointer !z-[9999]",
+            "font-[Jost] text-right text-amber-500 m-2 drop-shadow-2xl cursor-pointer !z-[9999] select-none",
           ].join(" ")}
         >
           <span

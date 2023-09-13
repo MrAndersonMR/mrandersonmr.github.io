@@ -45,7 +45,7 @@ function AtForm({
     return [
       css[1],
       styleRadius("form", themeStyle.form[level].radius, level),
-      styleTheme("text", themeStyle.text.main.color),
+      styleTheme("text", themeStyle.form[level].color),
       themeStyle.form[level].decoration,
       ["font-[", themeStyle.text.base.font, "]"].join(""),
     ].join(" ");
@@ -95,7 +95,7 @@ function AtForm({
             <></>
           )}
           <Form.Control
-            type="text"
+            type={type}
             className={cssStyle()}
             placeholder={
               placeholder

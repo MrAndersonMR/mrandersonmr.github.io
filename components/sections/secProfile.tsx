@@ -32,6 +32,7 @@ function SecProfile({ user }: { user: User }) {
 
   const [products, setProducts] = useState<Product[]>([]);
   const [users, setUsers] = useState<User[]>([]);
+  const [userA, setUser] = useState<User>();
   const [star, setStar] = useState(0);
   const [userState, setUserState] = useState("");
   const [userContact, setUserContact] = useState("");
@@ -41,6 +42,9 @@ function SecProfile({ user }: { user: User }) {
   useEffect(() => {
     setProducts(JSON.parse(localStorage.getItem("products")));
     setUsers(JSON.parse(localStorage.getItem("users")));
+    users.map((e) => {
+      if (e.token !== "" && e.token !== undefined) setUser(e);
+    });
   }, []);
 
   // function vote(histProductId, purchaseId, id) {
@@ -107,10 +111,13 @@ function SecProfile({ user }: { user: User }) {
 
   function updateUserAddress(address) {
     if (user)
-      if (user.addresses) user.addresses.push(address);
-      else {
+      if (user.addresses) {
+        user.addresses.push(address);
+        setUserState("");
+      } else {
         user.addresses = [];
         user.addresses.push(address);
+        setUserState("");
       }
     let usersScp = users.filter((e) => e.id !== user.id);
     let userScp = users.filter((e) => e.id === user.id)[0];
@@ -130,10 +137,13 @@ function SecProfile({ user }: { user: User }) {
 
   function updateUserContact(contact) {
     if (user)
-      if (user.contacts) user.contacts.push(contact);
-      else {
+      if (user.contacts) {
+        user.contacts.push(contact);
+        setUserContact("");
+      } else {
         user.contacts = [];
         user.contacts.push(contact);
+        setUserContact("");
       }
     let usersScp = users.filter((e) => e.id !== user.id);
     let userScp = users.filter((e) => e.id === user.id)[0];
@@ -584,40 +594,73 @@ function SecProfile({ user }: { user: User }) {
         <>
           <Row>
             <Col>
-              <AtText type="title" sentence={"personalData"} />
+              <AtText type="title" sentence={"personalData"} css="mb-2" />
               <Row>
                 <Col>
-                  <AtText type="legend" sentence={"personalId"} />
+                  <AtText type="legend" sentence={"personalId"} css="mb-1" />
                   {user.personalId ? (
-                    <div className="flex items-center justify-between rounded-full border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-6">
+                    <div
+                      className={[
+                        "flex items-center justify-between border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-3",
+                        styleRadius(
+                          "button",
+                          themeStyle.button.secondary.radius,
+                          "secondary"
+                        ),
+                      ].join(" ")}
+                    >
                       <AtText sentence={"l|:" + user.personalId} />
                     </div>
                   ) : (
-                    <div className="flex items-center justify-between rounded-full border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-6">
-                      <AtText sentence={"blankSpace"} />
+                    <div
+                      className={[
+                        "flex items-center justify-between pl-3 pr-1 py-1 my-2 mx-6",
+                      ].join(" ")}
+                    >
+                      <AtText sentence={"noValue"} />
                     </div>
                   )}
                 </Col>
                 <Col>
-                  <AtText type="legend" sentence={"card"} />
+                  <AtText type="legend" sentence={"card"} css="mb-1" />
                   {user.card ? (
-                    <div className="flex items-center justify-between rounded-full border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-6">
+                    <div
+                      className={[
+                        "flex items-center justify-between border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-3",
+                        styleRadius(
+                          "button",
+                          themeStyle.button.secondary.radius,
+                          "secondary"
+                        ),
+                      ].join(" ")}
+                    >
                       <AtText sentence={"l|:" + user.card} />
                     </div>
                   ) : (
-                    <div className="flex items-center justify-between rounded-full border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-6">
-                      <AtText sentence={"blankSpace"} />
+                    <div
+                      className={[
+                        "flex items-center justify-between pl-3 pr-1 py-1 my-2 mx-6",
+                      ].join(" ")}
+                    >
+                      <AtText sentence={"noValue"} />
                     </div>
                   )}
                 </Col>
               </Row>
-              <AtText type="legend" sentence={"contacts"} />
+              <AtText type="legend" sentence={"contacts"} css="mb-1" />
               {user.contacts ? (
                 user.contacts.map((ad, i) => {
                   return (
                     <div
                       key={i}
-                      className="flex items-center justify-between rounded-full border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-6"
+                      className={[
+                        "flex items-center justify-between border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-3",
+                        styleRadius(
+                          "button",
+                          themeStyle.button.secondary.radius,
+                          "secondary"
+                        ),
+                      ].join(" ")}
                     >
                       <AtText sentence={"l|:" + ad} />
                       <AtButton
@@ -629,15 +672,28 @@ function SecProfile({ user }: { user: User }) {
                   );
                 })
               ) : (
-                <></>
+                <div
+                  className={[
+                    "flex items-center justify-between pl-3 pr-1 py-1 my-2 mx-6",
+                  ].join(" ")}
+                >
+                  <AtText sentence={"noValue"} />
+                </div>
               )}
-              <AtText type="legend" sentence={"addresses"} />
+              <AtText type="legend" sentence={"addresses"} css="mb-1" />
               {user.addresses ? (
                 user.addresses.map((ad, i) => {
                   return (
                     <div
                       key={i}
-                      className="flex items-center justify-between rounded-full border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-6"
+                      className={[
+                        "flex items-center justify-between border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-3",
+                        styleRadius(
+                          "button",
+                          themeStyle.button.secondary.radius,
+                          "secondary"
+                        ),
+                      ].join(" ")}
                     >
                       <AtText sentence={"l|:" + ad} />
                       <AtButton
@@ -649,11 +705,17 @@ function SecProfile({ user }: { user: User }) {
                   );
                 })
               ) : (
-                <></>
+                <div
+                  className={[
+                    "flex items-center justify-between pl-3 pr-1 py-1 my-2 mx-6",
+                  ].join(" ")}
+                >
+                  <AtText sentence={"noValue"} />
+                </div>
               )}
               <Row>
                 <Col>
-                  <AtText type="title" sentence={"myCart"} />
+                  <AtText type="title" sentence={"myCart"} css="mb-2" />
                   {user.cartList.map((item, i) => {
                     return (
                       <div key={i}>
@@ -666,7 +728,7 @@ function SecProfile({ user }: { user: User }) {
                   })}
                 </Col>
                 <Col>
-                  <AtText type="title" sentence={"myFavorites"} />
+                  <AtText type="title" sentence={"myFavorites"} css="mb-2" />
                   {products ? (
                     products.map((e, i) => {
                       if (user.fav)
@@ -695,7 +757,7 @@ function SecProfile({ user }: { user: User }) {
                   user.histPurchase.map((e, i) => {
                     return (
                       <div key={i}>
-                        <div className="flex mt-6 gap-2">
+                        <div className="flex mt-6 mb-2 gap-2">
                           <AtText type="title" sentence={"purchase"} />
                           <AtText type="title" sentence={"l|:" + (i + 1)} />
                         </div>
@@ -711,7 +773,7 @@ function SecProfile({ user }: { user: User }) {
                                         sentence={"l|:" + f.product.name}
                                         css="mb-2 mt-2"
                                       />
-                                      <div className="flex gap-3">
+                                      <div className="flex gap-3 flex-col md:flex-row items-center md:items-start">
                                         <div className="flex gap-2">
                                           <AtText
                                             type="text"
@@ -816,61 +878,83 @@ function SecProfile({ user }: { user: User }) {
                         ) : (
                           <></>
                         )}
-                        <div className="flex items-baseline justify-end">
-                          <AtText type="legend" sentence={"creationDate"} />
-                          <AtText type="legend" sentence={"l|:: "} css="mr-2" />
-                          <AtText
-                            type="legend"
-                            sentence={
-                              "l|:" +
-                              [
-                                new Date(e.purchase.creationDate).getDate(),
-                                new Date(e.purchase.creationDate).getMonth() +
-                                  1,
-                                new Date(e.purchase.creationDate).getFullYear(),
-                              ].join("/")
-                            }
-                            css="mr-3"
-                          />
-                          <AtText type="legend" sentence={"deliveryDate"} />
-                          <AtText type="legend" sentence={"l|:: "} css="mr-2" />
-                          <AtText
-                            type="legend"
-                            sentence={
-                              "l|:" +
-                              [
-                                new Date(e.purchase.deliveryDate).getDate(),
-                                new Date(e.purchase.deliveryDate).getMonth() +
-                                  1,
-                                new Date(e.purchase.deliveryDate).getFullYear(),
-                              ].join("/")
-                            }
-                          />
+                        <div className="flex flex-col md:flex-row justify-end">
+                          <div className="flex items-baseline">
+                            <AtText type="legend" sentence={"creationDate"} />
+                            <AtText
+                              type="legend"
+                              sentence={"l|:: "}
+                              css="mr-2"
+                            />
+                            <AtText
+                              type="legend"
+                              sentence={
+                                "l|:" +
+                                [
+                                  new Date(e.purchase.creationDate).getDate(),
+                                  new Date(e.purchase.creationDate).getMonth() +
+                                    1,
+                                  new Date(
+                                    e.purchase.creationDate
+                                  ).getFullYear(),
+                                ].join("/")
+                              }
+                              css="mr-3"
+                            />
+                          </div>
+                          <div className="flex">
+                            <AtText type="legend" sentence={"deliveryDate"} />
+                            <AtText
+                              type="legend"
+                              sentence={"l|:: "}
+                              css="mr-2"
+                            />
+                            <AtText
+                              type="legend"
+                              sentence={
+                                "l|:" +
+                                [
+                                  new Date(e.purchase.deliveryDate).getDate(),
+                                  new Date(e.purchase.deliveryDate).getMonth() +
+                                    1,
+                                  new Date(
+                                    e.purchase.deliveryDate
+                                  ).getFullYear(),
+                                ].join("/")
+                              }
+                            />
+                          </div>
                         </div>
-                        <div className="flex items-baseline justify-end">
-                          <AtText type="text" sentence={"status"} />
-                          <AtText type="text" sentence={"l|:: "} css="mr-2" />
-                          <AtText
-                            type="subtitle"
-                            sentence={"l|:" + e.purchase.status}
-                            css="mr-3"
-                          />
-                          <AtText type="text" sentence={"receivedDate"} />
-                          <AtText type="text" sentence={"l|:: "} css="mr-2" />
-                          <AtText
-                            type="text"
-                            sentence={
-                              "l|:" +
-                              [
-                                new Date(e.purchase.receivedDate).getDate(),
-                                new Date(e.purchase.receivedDate).getMonth() +
-                                  1,
-                                new Date(e.purchase.receivedDate).getFullYear(),
-                              ].join("/")
-                            }
-                          />
+                        <div className="flex flex-col md:flex-row items-baseline justify-end">
+                          <div className="flex items-baseline">
+                            <AtText type="text" sentence={"status"} />
+                            <AtText type="text" sentence={"l|:: "} css="mr-2" />
+                            <AtText
+                              type="subtitle"
+                              sentence={"l|:" + e.purchase.status}
+                              css="mr-3"
+                            />
+                          </div>
+                          <div className="flex items-baseline">
+                            <AtText type="text" sentence={"receivedDate"} />
+                            <AtText type="text" sentence={"l|:: "} css="mr-2" />
+                            <AtText
+                              type="text"
+                              sentence={
+                                "l|:" +
+                                [
+                                  new Date(e.purchase.receivedDate).getDate(),
+                                  new Date(e.purchase.receivedDate).getMonth() +
+                                    1,
+                                  new Date(
+                                    e.purchase.receivedDate
+                                  ).getFullYear(),
+                                ].join("/")
+                              }
+                            />
+                          </div>
                         </div>
-                        <div className="w-full flex justify-between items-baseline">
+                        <div className="w-full flex flex-col md:flex-row justify-between items-baseline">
                           <div className="flex">
                             <AtText type="text" sentence={"deliveryFee"} />
                             <AtText type="text" sentence={"l|:: "} css="mr-2" />
@@ -952,7 +1036,9 @@ function SecProfile({ user }: { user: User }) {
             <div className={"w-100 flex justify-around flex-col md:flex-row"}>
               <div
                 className={
-                  user.type === "patient" ? "flex flex-col items-center" : ""
+                  user.type === "patient"
+                    ? "flex flex-col items-center"
+                    : "flex flex-col items-center"
                 }
               >
                 <div
@@ -975,20 +1061,42 @@ function SecProfile({ user }: { user: User }) {
                     alt={""}
                   />
                 </div>
-                <AtText type="title" sentence={["l|:", user.name].join(" ")} />
+                <AtText
+                  type="title"
+                  sentence={["l|:", user.name].join(" ")}
+                  css="my-1"
+                />
                 <AtText type="text" sentence={["l|:", user.email].join(" ")} />
               </div>
               <div className={user.type === "patient" ? "" : "hidden"}>
                 <AtText type="title" sentence={"personalData"} />
                 <Row>
                   <Col>
-                    <AtText type="legend" sentence={"personalId"} />
+                    <AtText type="legend" sentence={"personalId"} css="mb-2" />
                     {user.personalId ? (
-                      <div className="flex items-center justify-between rounded-full border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-6">
+                      <div
+                        className={[
+                          "flex items-center justify-between border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-3",
+                          styleRadius(
+                            "button",
+                            themeStyle.button.secondary.radius,
+                            "secondary"
+                          ),
+                        ].join(" ")}
+                      >
                         <AtText sentence={"l|:" + user.personalId} />
                       </div>
                     ) : (
-                      <div className="flex items-center justify-between rounded-full border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-6">
+                      <div
+                        className={[
+                          "flex items-center justify-between border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-3",
+                          styleRadius(
+                            "button",
+                            themeStyle.button.secondary.radius,
+                            "secondary"
+                          ),
+                        ].join(" ")}
+                      >
                         <AtText sentence={"blankSpace"} />
                       </div>
                     )}
@@ -996,29 +1104,55 @@ function SecProfile({ user }: { user: User }) {
                   <Col>
                     <AtText type="legend" sentence={"card"} />
                     {user.card ? (
-                      <div className="flex items-center justify-between rounded-full border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-6">
+                      <div
+                        className={[
+                          "flex items-center justify-between border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-3",
+                          styleRadius(
+                            "button",
+                            themeStyle.button.secondary.radius,
+                            "secondary"
+                          ),
+                        ].join(" ")}
+                      >
                         <AtText sentence={"l|:" + user.card} />
                       </div>
                     ) : (
-                      <div className="flex items-center justify-between rounded-full border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-6">
+                      <div
+                        className={[
+                          "flex items-center justify-between border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-3",
+                          styleRadius(
+                            "button",
+                            themeStyle.button.secondary.radius,
+                            "secondary"
+                          ),
+                        ].join(" ")}
+                      >
                         <AtText sentence={"blankSpace"} />
                       </div>
                     )}
                   </Col>
                 </Row>
-                <AtText type="legend" sentence={"contacts"} />
+                <AtText type="legend" sentence={"contacts"} css="mb-1" />
                 {user.contacts ? (
                   user.contacts.map((ad, i) => {
                     return (
                       <div
                         key={i}
-                        className="flex items-center justify-between rounded-full border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-6"
+                        className={[
+                          "flex items-center justify-between border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-3",
+                          styleRadius(
+                            "button",
+                            themeStyle.button.secondary.radius,
+                            "secondary"
+                          ),
+                        ].join(" ")}
                       >
                         <AtText sentence={"l|:" + ad} />
                         <AtButton
                           level="secondary"
                           iconName="less"
                           iconSize="16px"
+                          click={() => {}}
                         />
                       </div>
                     );
@@ -1026,13 +1160,20 @@ function SecProfile({ user }: { user: User }) {
                 ) : (
                   <></>
                 )}
-                <AtText type="legend" sentence={"addresses"} />
+                <AtText type="legend" sentence={"addresses"} css="mb-1" />
                 {user.addresses ? (
                   user.addresses.map((ad, i) => {
                     return (
                       <div
                         key={i}
-                        className="flex items-center justify-between rounded-full border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-6"
+                        className={[
+                          "flex items-center justify-between border-t-[1px] border-x-[1px] border-b-[3px] border-sky-500 pl-3 pr-1 py-1 my-2 mx-3",
+                          styleRadius(
+                            "button",
+                            themeStyle.button.secondary.radius,
+                            "secondary"
+                          ),
+                        ].join(" ")}
                       >
                         <AtText sentence={"l|:" + ad} />
                         <AtButton
@@ -1052,6 +1193,7 @@ function SecProfile({ user }: { user: User }) {
               level="main"
               placeholder="l|:new contact"
               css={["my-2"]}
+              value={userContact}
               change={(e) => {
                 setUserContact(e.target.value);
               }}
@@ -1062,7 +1204,7 @@ function SecProfile({ user }: { user: User }) {
               level="main"
               placeholder="l|:new address"
               css={["my-2"]}
-              // value={userState}
+              value={userState}
               change={(e) => {
                 setUserState(e.target.value);
               }}

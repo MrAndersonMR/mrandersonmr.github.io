@@ -251,15 +251,21 @@ function AtCard({
             })}
           </div>
           {/* AQUI SECGRID */}
-          <div className="my-3">
-            <SecBoard
-              type="sm"
-              title="l|:Anderson"
-              text="l|:Anderson"
-              iconType="bs"
-              icon="BsChevronDown"
-              iconSize="36px"
-            />
+          <div className="flex flex-col md:flex-row my-3 gap-2">
+            {item.labels.map((it, i) => {
+              return (
+                <div key={i}>
+                  <SecBoard
+                    type="sm"
+                    title={it.split("|")[2]}
+                    text={"l|:" + it.split("|")[3]}
+                    iconType={it.split("|")[0]}
+                    icon={it.split("|")[1]}
+                    iconSize="36px"
+                  />
+                </div>
+              );
+            })}
           </div>
         </Card.Body>
       </div>

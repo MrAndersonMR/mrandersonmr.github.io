@@ -11,8 +11,10 @@ import { monetaryFormat } from "../config/formatConfig";
 
 function ElCartList({
   carts = undefined,
+  setShow = undefined,
 }: {
   carts?: { cartList: CartItem[] };
+  setShow?: any;
 }) {
   const [user, setUser] = useState<User>();
 
@@ -42,7 +44,12 @@ function ElCartList({
         </Col>
         <Col>
           <Form.Select aria-label="Default select example">
-            <option>Your Address</option>
+            <option>tu dirección</option>
+            {user && user.addresses
+              ? user.addresses.map((e, i) => {
+                  return <option key={i}>{e}</option>;
+                })
+              : undefined}
           </Form.Select>
         </Col>
       </Row>
@@ -81,13 +88,22 @@ function ElCartList({
           sentence={"l|:" + monetaryFormat(count(carts) + 5)}
         />
       </div>
-      <AtButton sentence="l|:Buy" click={() => setShowPurchase(true)} />
+      <div className="flex justify-end mt-2">
+        <AtButton
+          sentence="goPay"
+          click={() => {
+            setShowPurchase(true);
+            // setShow(false);
+          }}
+        />
+      </div>
       <SecModal
         type="purchase"
         show={showPurchase}
         title="myPurchase"
         closeButton={"stylized"}
         setShow={setShowPurchase}
+        setShowEx={setShow}
         carts={carts}
       />
     </>

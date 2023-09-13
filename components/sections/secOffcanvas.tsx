@@ -6,15 +6,19 @@ import AtButton from "../atoms/atButton";
 import AtText from "../atoms/atText";
 import { ThemeStyleContext } from "../../context/themeStyleContext";
 import { ThemeContext } from "../../context/themeContext";
+import AtForm from "../atoms/atForm";
+import AtToast from "../atoms/atToast";
 
 function SecOffcanvas({
   show = false,
   setShow = undefined,
   type = undefined,
+  setUser = undefined,
 }: {
   show: boolean;
   setShow: any;
   type?: "login";
+  setUser?: any;
 }) {
   const [users, setUsers] = useState<User[]>([]);
   const [login, setLogin] = useState(false);
@@ -23,6 +27,11 @@ function SecOffcanvas({
   const [password, setPassword] = useState("");
   const [themeStyle, setThemeStyle] = useContext(ThemeStyleContext);
   const [theme, setTheme] = useContext(ThemeContext);
+
+  const [register, setRegister] = useState(false);
+  const [registered, setRegistered] = useState(false);
+  const [notRegistered, setNotRegistered] = useState(false);
+  const [logged, setLogged] = useState(false);
 
   useEffect(() => {
     setLogin(false);
@@ -50,9 +59,10 @@ function SecOffcanvas({
         histPurchase: [],
       });
       setUsers(usersAX);
-      alert("Email Registrado");
+      setRegister(true);
+      // alert("Email Registrado");
       localStorage.setItem("users", JSON.stringify(usersAX));
-    } else alert("Email já cadastrado");
+    } else setRegistered(true); //alert("Email já cadastrado");
     // setRender(!render);
   };
 
@@ -67,12 +77,15 @@ function SecOffcanvas({
         userListArray = userListArray.filter((item) => item.email !== email);
         userListArray.push(user);
         setShow(false);
-        alert("You are logged, name: " + e.name + " token: " + e.token);
+        setLogged(true);
+        // alert("You are logged, name: " + e.name + " token: " + e.token);
+        () => setUser(e);
       } else {
         e.token = "";
       }
     });
-    console.log(userListArray);
+    if (!user) setNotRegistered(true);
+    // console.log(userListArray);
     localStorage.setItem("users", JSON.stringify(userListArray));
   };
 
@@ -115,77 +128,131 @@ function SecOffcanvas({
                   </Nav.Link>
                 </Nav.Item>
               </Nav>
-              <Form>
-                {!login ? (
+              {!login ? (
+                <AtForm
+                  title="name"
+                  placeholder="name"
+                  level="main"
+                  value={name}
+                  change={(e: any) => setName(e.target.value)}
+                  css={["mb-2"]}
+                />
+              ) : (
+                <></>
+              )}
+              <AtForm
+                title="email"
+                placeholder="email"
+                level="main"
+                value={email}
+                change={(e: any) => setEmail(e.target.value)}
+                css={["mb-2"]}
+              />
+              <AtForm
+                type="password"
+                title="password"
+                placeholder="password"
+                level="main"
+                value={password}
+                change={(e: any) => setPassword(e.target.value)}
+                css={["mb-4"]}
+              />
+              <Form.Group as={Row} className="mb-3">
+                <Col className="flex justify-end">
+                  {!login ? (
+                    <AtButton sentence="register" click={() => updateUsers()} />
+                  ) : (
+                    <AtButton sentence="login" click={() => checkEmail()} />
+                  )}
+                </Col>
+              </Form.Group>
+              {false ? (
+                <Form>
+                  {!login ? (
+                    <Form.Group
+                      as={Row}
+                      className="mb-3 flex justify-between"
+                      controlId="formHorizontalName"
+                    >
+                      <Form.Label column sm={2}>
+                        Name
+                      </Form.Label>
+                      <Col sm={9}>
+                        <Form.Control
+                          type="text"
+                          placeholder="Name"
+                          value={name}
+                          onChange={(e: any) => setName(e.target.value)}
+                        />
+                      </Col>
+                    </Form.Group>
+                  ) : (
+                    <></>
+                  )}
+                  <Form.Group as={Row} className="mb-3">
+                    <Col className="flex justify-end">
+                      {!login ? (
+                        <AtButton
+                          sentence="register"
+                          click={() => updateUsers()}
+                        />
+                      ) : (
+                        <AtButton sentence="login" click={() => checkEmail()} />
+                      )}
+                    </Col>
+                  </Form.Group>
                   <Form.Group
                     as={Row}
                     className="mb-3 flex justify-between"
-                    controlId="formHorizontalName"
+                    controlId="formHorizontalEmail"
                   >
                     <Form.Label column sm={2}>
-                      Name
+                      Email
                     </Form.Label>
                     <Col sm={9}>
                       <Form.Control
-                        type="text"
-                        placeholder="Name"
-                        value={name}
-                        onChange={(e: any) => setName(e.target.value)}
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e: any) => setEmail(e.target.value)}
                       />
                     </Col>
                   </Form.Group>
-                ) : (
-                  <></>
-                )}
-                <Form.Group
-                  as={Row}
-                  className="mb-3 flex justify-between"
-                  controlId="formHorizontalEmail"
-                >
-                  <Form.Label column sm={2}>
-                    Email
-                  </Form.Label>
-                  <Col sm={9}>
-                    <Form.Control
-                      type="email"
-                      placeholder="Email"
-                      value={email}
-                      onChange={(e: any) => setEmail(e.target.value)}
-                    />
-                  </Col>
-                </Form.Group>
-                <Form.Group
-                  as={Row}
-                  className="mb-3 flex justify-between"
-                  controlId="formHorizontalPassword"
-                >
-                  <Form.Label column sm={2}>
-                    Password
-                  </Form.Label>
-                  <Col sm={9}>
-                    <Form.Control
-                      type="password"
-                      placeholder="Password"
-                      value={password}
-                      onChange={(e: any) => setPassword(e.target.value)}
-                    />
-                  </Col>
-                </Form.Group>
-                <Form.Group as={Row} className="mb-3">
-                  <Col
-                    /*sm={{ span: 10, offset: 2 }}*/ className="flex justify-end"
+                  <Form.Group
+                    as={Row}
+                    className="mb-3 flex justify-between"
+                    controlId="formHorizontalPassword"
                   >
-                    {!login ? (
-                      <AtButton
-                        /* type="submit" */ sentence="register"
-                        click={() => updateUsers()}
+                    <Form.Label column sm={2}>
+                      Password
+                    </Form.Label>
+                    <Col sm={9}>
+                      <Form.Control
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e: any) => setPassword(e.target.value)}
                       />
-                    ) : (
-                      <AtButton sentence="login" click={() => checkEmail()} />
-                    )}
-                  </Col>
-                </Form.Group>
-              </Form>
+                    </Col>
+                  </Form.Group>
+                  <Form.Group as={Row} className="mb-3">
+                    <Col
+                      /*sm={{ span: 10, offset: 2 }}*/ className="flex justify-end"
+                    >
+                      {!login ? (
+                        <AtButton
+                          /* type="submit" */ sentence="register"
+                          click={() => updateUsers()}
+                        />
+                      ) : (
+                        <AtButton sentence="login" click={() => checkEmail()} />
+                      )}
+                    </Col>
+                  </Form.Group>
+                </Form>
+              ) : (
+                <></>
+              )}
               {!login ? (
                 <></>
               ) : (
@@ -204,6 +271,47 @@ function SecOffcanvas({
           )}
         </Offcanvas.Body>
       </Offcanvas>
+      <AtToast
+        defShow={logged}
+        defSetShow={setLogged}
+        position="top-center"
+        closeButton={true}
+        title="l|:Sesion iniciada"
+        content={[
+          "l|:Su sesion se inicio, nombre:",
+          users.filter((e) => e.token !== "")[0]
+            ? users.filter((e) => e.token !== "")[0].name
+            : "",
+          "token:",
+          users.filter((e) => e.token !== "")[0]
+            ? users.filter((e) => e.token !== "")[0].token
+            : "",
+        ].join(" ")}
+      />
+      <AtToast
+        defShow={register}
+        defSetShow={setRegister}
+        position="top-center"
+        closeButton={true}
+        title="l|:Registro finalizado"
+        content={["l|:Su registro foi concluido"].join(" ")}
+      />
+      <AtToast
+        defShow={registered}
+        defSetShow={setRegistered}
+        position="top-center"
+        closeButton={true}
+        title="l|:Usuario ya resgistrado"
+        content={["l|:Correo electronico ya resgistrado"].join(" ")}
+      />
+      <AtToast
+        defShow={notRegistered}
+        defSetShow={setNotRegistered}
+        position="top-center"
+        closeButton={true}
+        title="l|:Usuario no resgistrado"
+        content={["l|:Correo electronico no esta resgistrado"].join(" ")}
+      />
     </>
   );
 }

@@ -26,7 +26,7 @@ import AtImage from "../components/atoms/atImage";
 function loadTailwind() {
   return (
     <div className="absolute top-0 left-0 hidden">
-      <span className="font-[Gloock] font-['Fragment_Mono'] font-['Libre_Bodoni'] font-['Square_Peg'] font-[Elsie] font-['Julius_Sans_One'] font-[Economica] font-[Jost] font-['Euphoria_Script'] font-[Tauri] font-['Nixie_One'] font-['Six_Caps'] font-['PT_Serif_Caption'] font-['Yanone_Kaffeesatz'] font-[Fredoka] font-['M_PLUS_Code_Latin'] font-[Syne] font-[Hurricane] font-[Calistoga] font-['Modern_Antiqua'] font-['Suez_One'] font-['Liu_Jian_Mao_Cao']">
+      <span className="font-[Gloock] font-['Fragment_Mono'] font-['Libre_Bodoni'] font-['Square_Peg'] font-[Elsie] font-['Julius_Sans_One'] font-[Economica] font-[Jost] font-['Euphoria_Script'] font-[Tauri] font-['Nixie_One'] font-['Six_Caps'] font-['PT_Serif_Caption'] font-['Yanone_Kaffeesatz'] font-[Fredoka] font-['M_PLUS_Code_Latin'] font-[Syne] font-[Hurricane] font-[Calistoga] font-['Modern_Antiqua'] font-['Suez_One'] font-['Meow_Script'] font-['Poltawski_Nowy'] font-[Prata] font-[Artifika] font-['Yeseva_One'] font-['Petit_Formal_Script']">
         1
       </span>
       <span className="text-xs text-sm text-base text-lg text-xl text-2xl text-3xl text-4xl text-5xl text-6xl text-7xl text-8xl text-9xl">
@@ -44,7 +44,7 @@ function loadTailwind() {
       <span className="!w-[40%] !rounded-full !border-black !border-x-0">
         6
       </span>
-      <span className="!bg-slate-500 text-slate-300 !text-slate-300 bg-slate-300 !bg-slate-300 text-slate-100 !text-slate-100 bg-slate-100 !bg-slate-100 bg-slate-50 bg-slate-700 !bg-slate-50 !bg-slate-700 !border-slate-700 !text-slate-700 !border-white hover:!border-slate-700 hover:!border-black hover:!border-white">
+      <span className="!bg-slate-500 bg-slate-500 text-slate-300 !text-slate-300 bg-slate-300 !bg-slate-300 text-slate-100 !text-slate-100 bg-slate-100 !bg-slate-100 bg-slate-50 bg-slate-700 !bg-slate-50 !bg-slate-700 !border-slate-700 !text-slate-700 !border-white hover:!border-slate-700 hover:!border-black hover:!border-white">
         7
       </span>
       <span className="bottom-0 top-0 font-['Source_Serif_4']">8</span>
@@ -54,7 +54,7 @@ function loadTailwind() {
       <span className="!rounded-tl-[5rem] !rounded-br-[5rem] rounded-tl-[5rem] rounded-br-[5rem] rounded-none rounded-sm rounded rounded-md rounded-lg rounded-xl rounded-2xl rounded-3xl rounded-full">
         10
       </span>
-      <span className="!w-[40%] !w-[100%] ease-linear ease-in ease-out ease-in-out delay-100 delay-200 delay-300 delay-700 transition delay-150 duration-300 ease-in-out">
+      <span className="text-ellipsis truncate max-w-full max-w-fit gap-y-3 !rounded-lg select-none invert !w-[40%] !w-[100%] ease-linear ease-in ease-out ease-in-out delay-100 delay-200 delay-300 delay-700 transition delay-150 duration-300 ease-in-out">
         11
       </span>
     </div>
@@ -64,6 +64,7 @@ function loadTailwind() {
 function loadImages() {
   return (
     <div className="absolute top-0 left-0 hidden">
+      <div className="bg-[url('https://images.unsplash.com/photo-1632059368252-be6d65abc4e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')]"></div>
       {/*millcayac*/}
       <div className="bg-[url('https://images.unsplash.com/photo-1598162148064-51f41779e988?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80')]"></div>
       <div className="bg-[url('https://images.unsplash.com/photo-1631148550197-19d37c2a835e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=408&q=80')]"></div>
@@ -86,6 +87,7 @@ function loadImages() {
       <div className="bg-[url('https://images.unsplash.com/photo-1619502735729-13b7525f13e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80')]"></div>
       <div className="bg-[url('https://images.unsplash.com/photo-1620278596990-fdf04885f5b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80')]"></div>
       <div className="bg-[url('https://images.unsplash.com/photo-1620706857370-e1b9770e8bb1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80')]"></div>
+      <div className="bg-[url('https://images.unsplash.com/photo-1547499417-61a435d27cb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80')]"></div>
     </div>
   );
 }

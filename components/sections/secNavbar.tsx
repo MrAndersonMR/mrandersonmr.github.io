@@ -11,6 +11,8 @@ import {
   Navbar,
   OverlayTrigger,
   Popover,
+  Toast,
+  ToastContainer,
   Tooltip,
 } from "react-bootstrap";
 import Icon from "../icon/icon";
@@ -38,6 +40,7 @@ import AtForm from "../atoms/atForm";
 import AtImage from "../atoms/atImage";
 import AtPopover from "../atoms/atPopover";
 import AtOverlay from "../atoms/atOverlay";
+import AtToast from "../atoms/atToast";
 
 function SecNavbar({
   title = undefined,
@@ -51,7 +54,7 @@ function SecNavbar({
   actions = [],
   links = [],
   hrefs = [],
-  bg = "primary",
+  bg = [],
   bgImg = undefined,
   sticky = false,
   fixed = undefined,
@@ -70,7 +73,7 @@ function SecNavbar({
   actions?: string[];
   links: any[];
   hrefs: any[];
-  bg?: string;
+  bg?: string[];
   bgImg?: string;
   sticky?: boolean;
   fixed?: "top" | "bottom";
@@ -86,6 +89,7 @@ function SecNavbar({
   const [theme, setTheme] = useContext(ThemeContext);
 
   const [showModal, setShowModal] = useState(false);
+  const [showTuto, setShowTuto] = useState(true);
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const [show, setShow] = useState(false);
@@ -131,7 +135,7 @@ function SecNavbar({
           }
         }
       });
-  }, []);
+  });
 
   const navBarImage = () => {
     // if (bgImg)
@@ -140,13 +144,23 @@ function SecNavbar({
     // );
     if (themeStyle.images.navbar.url)
       return (
-        <AtImage
-          src={themeStyle.images.navbar.url}
-          fill={true}
-          css={"!relative !w-[50%]"}
-          sizes={"auto"}
-          iLevel="navbar"
-        />
+        <div
+          className={
+            showNavbar
+              ? "flex justify-center mt-[1rem] -mb-[6rem] z-10"
+              : "flex justify-center my-[1rem]"
+          }
+        >
+          <AtImage
+            src={[themeStyle.images.navbar.url]}
+            // fill={true}
+            css={"!relative object-cover w-[250px] h-[250px]"}
+            // sizes={"auto"}
+            width={250}
+            height={250}
+            iLevel="navbar"
+          />
+        </div>
       );
     return undefined;
   };
@@ -187,9 +201,15 @@ function SecNavbar({
                   />
                 </Nav.Link>
               </Col>
-            ) : (
+            ) : e === "language" ? (
               <Col key={i} className={"flex items-center justify-center"}>
                 <AtIcon name={e} size="32px" css="" />
+              </Col>
+            ) : (
+              <Col key={i} className={"flex items-center justify-center"}>
+                <Nav.Link onClick={() => alert("Anderson")}>
+                  <AtIcon name={e} size="32px" css="" />
+                </Nav.Link>
               </Col>
             )
           )}
@@ -219,6 +239,7 @@ function SecNavbar({
 
   function checkPlace(elem) {
     let values = elem.split("|:");
+    console.log(values);
     if (values[0] === "nb") return values[1];
   }
 
@@ -286,8 +307,6 @@ function SecNavbar({
   const generateAccount = () => {
     return (
       <div className="!flex !items-center">
-        {" "}
-        {/*key={key}*/}
         <AtOverlay
           type={"trigger"}
           shower={"popover"}
@@ -329,8 +348,8 @@ function SecNavbar({
               <AtImage
                 src={
                   user && user.image
-                    ? user.image
-                    : themeStyle.images.defaultProfile.url
+                    ? [user.image]
+                    : [themeStyle.images.defaultProfile.url]
                 }
                 fill={true}
                 sizes="auto"
@@ -427,7 +446,7 @@ function SecNavbar({
             variant === "light" ? "" : "text-white",
             "flex capitalize",
           ].join(" ")}
-          href="/profile"
+          href=""
         >
           <AtText sentence={"hello"} />
           <AtText sentence={"l|:, "} /> &nbsp;
@@ -450,9 +469,15 @@ function SecNavbar({
         className={"absolute top-0 ml-2 !rounded-full !py-1 !px-[.4rem]"}
       >
         {/* <div className="w-[3px] h-[3px]"></div> */}
-        <h6 className="!mb-0 !text-[.5rem]">
-          {JSON.stringify(user ? user.cartList.length : 0)}
-        </h6>
+        {/* {JSON.stringify( */}
+        {user ? (
+          <AtText
+            type="legend"
+            css="!text-[.5rem]"
+            sentence={"l|:" + user.cartList.length.toString()}
+          />
+        ) : undefined}
+        {/* )} */}
       </Badge>
     );
   };
@@ -585,7 +610,7 @@ function SecNavbar({
         <AtOverlay
           type={"trigger"}
           shower={"popover"}
-          placement="bottom"
+          placement={fixed === "bottom" ? "top" : "bottom"}
           // title={<AtText sentence="l|:Anderson" />}
           content={
             <>
@@ -628,7 +653,9 @@ function SecNavbar({
         <Nav.Link
           key={key}
           className="relative block"
-          onClick={() => setShowModal(true)}
+          onClick={() => {
+            user ? setShowModal(true) : undefined;
+          }}
         >
           {/* {Icon("ri", "RiHandbagLine")} */}
           <AtIcon name="shop" />
@@ -664,7 +691,14 @@ function SecNavbar({
   const navBarDefault = () => {
     if (!iconsTypes && !iconsNames)
       return (
-        <Container className={!showNavbar ? "flex flex-col" : ""}>
+        <Container
+          className={[
+            !showNavbar ? "flex flex-col" : "",
+            themeStyle.themeName === "trebol4hojas"
+              ? "flex flex-col items-start"
+              : "",
+          ].join(" ")}
+        >
           {tLogo ? tLogo : <Navbar.Brand href="#home">{title}</Navbar.Brand>}
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           {!showNavbar ? (
@@ -716,7 +750,7 @@ function SecNavbar({
           </Nav>
           <Nav
             className={[
-              "flex items-center",
+              "flex items-center z-20",
               !showNavbar ? "justify-center w-[200px]" : "",
             ].join(" ")}
           >
@@ -728,7 +762,7 @@ function SecNavbar({
           </Nav>
           <Nav
             className={[
-              "flex items-center",
+              "flex items-center z-20",
               !showNavbar ? "!flex-col w-[200px]" : "",
             ].join(" ")}
           >
@@ -788,20 +822,24 @@ function SecNavbar({
       {/* {size.width} */}
       <div className="flex flex-col">
         {navBarImage()}
-        {themeStyle.texts.logo}
+        {/* {themeStyle.texts.logo} */}
         <Navbar
           collapseOnSelect
           variant={variant}
           expand={expand}
           fixed={fixed}
-          bg={bg}
+          bg={bg[1] && theme !== "light" ? bg[1] : bg[0]}
           sticky={sticky ? "top" : undefined}
+          className={
+            themeStyle.themeName === "trebol4hojas" ? "!inline-table" : ""
+          }
         >
           {navBarDefault()}
           {navBarBaseIcons()}
         </Navbar>
       </div>
       <SecModal
+        userPr={user}
         show={showProfileModal}
         title={"myProfile"}
         setShow={setShowProfileModal}
@@ -822,6 +860,39 @@ function SecNavbar({
         type="login"
         show={showOffcanvas}
         setShow={setShowOffcanvas}
+        setUser={setUser}
+      />
+      {/* <ToastContainer
+        className="p-3"
+        position={"bottom-center"}
+        style={{ zIndex: 9999 }}
+      >
+        <Toast
+          show={showOffcanvas}
+          // onClose={() => setShowOffcanvas(false)}
+          bg="dark"
+        >
+          <Toast.Header closeButton={false}>
+            <img
+              src="holder.js/20x20?text=%20"
+              className="rounded me-2"
+              alt=""
+            />
+            <strong className="me-auto">Agrega un nuevo usuario</strong>
+            <small></small>
+          </Toast.Header>
+          <Toast.Body className="text-white">
+            Los datos no tienen por qué ser reales, es sólo un ejemplo.
+          </Toast.Body>
+        </Toast>
+      </ToastContainer> */}
+      <AtToast
+        defShow={showOffcanvas}
+        defSetShow={setShowOffcanvas}
+        position="bottom-center"
+        closeButton={false}
+        title="l|:Agrega un nuevo usuario"
+        content="l|:Los datos no tienen por qué ser reales, es sólo un ejemplo."
       />
     </>
   );

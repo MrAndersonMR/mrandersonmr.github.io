@@ -24,21 +24,25 @@ function AtText({
         ["font-[", themeStyle.text.main.font, "]"].join(""),
         styleTheme("text", themeStyle.text.main.color),
         ["text-", themeStyle.text.main.size].join(""),
+        themeStyle.text.main.decoration,
       ].join(" "),
       subtitle: [
         ["font-[", themeStyle.text.secondary.font, "]"].join(""),
         styleTheme("text", themeStyle.text.secondary.color),
         ["text-", themeStyle.text.secondary.size].join(""),
+        themeStyle.text.secondary.decoration,
       ].join(" "),
       text: [
         ["font-[", themeStyle.text.base.font, "]"].join(""),
         styleTheme("text", themeStyle.text.base.color),
         ["text-", themeStyle.text.base.size].join(""),
+        themeStyle.text.base.decoration,
       ].join(" "),
       legend: [
         ["font-[", themeStyle.text.sub.font, "]"].join(""),
         styleTheme("text", themeStyle.text.sub.color),
         ["text-", themeStyle.text.sub.size].join(""),
+        themeStyle.text.sub.decoration,
       ].join(" "),
     };
     return values[type];
