@@ -473,5 +473,165 @@
     "en": "thanks for buy with us",
     "es": "gracias por eligirnos",
     "pt": "obrigado pela preferência"
+  },
+  "5%": {
+    "en": "5%",
+    "es": "5%",
+    "pt": "5%"
+  },
+  "100%": {
+    "en": "100%",
+    "es": "100%",
+    "pt": "100%"
+  },
+  "cotton": {
+    "en": "cotton",
+    "es": "cotton",
+    "pt": "alguodão"
+  },
+  "spandex": {
+    "en": "spandex",
+    "es": "cotton",
+    "pt": "cotton"
+  },
+  "100Cotton": {
+    "en": "100% cotton",
+    "es": "100% cotton",
+    "pt": "100% algudão"
+  },
+  "comfortable": {
+    "en": "comfortable",
+    "es": "confortable",
+    "pt": "confortável"
+  },
+  "durable": {
+    "en": "durable",
+    "es": "durable",
+    "pt": "durável"
+  },
+  "manyDesigns": {
+    "en": "many designs",
+    "es": "muchos estilos",
+    "pt": "muitos estilos"
+  },
+  "easyClean": {
+    "en": "easy to clean",
+    "es": "fácil de limpiar",
+    "pt": "fácil de limpar"
+  },
+  "light": {
+    "en": "light",
+    "es": "muchos estilos",
+    "pt": "leve"
+  },
+  "30discount": {
+    "en": "30% discount",
+    "es": "30% de descuento",
+    "pt": "30% de desconto"
+  },
+  "imported": {
+    "en": "imported",
+    "es": "importado",
+    "pt": "importado"
+  },
+  "collection": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "highVitamins": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "completeMeal": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "favorityDogs": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "localProducer": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "lowCalories": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "healthy": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "tasty": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "typicalBrazilian": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "traditionalMalaysian": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "chefSpecial": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "newFlavors": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "bestBrand": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "skinProtector": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "naturalIngridients": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "veryConcentrated": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "easyApplication": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "noRecipe": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "longLifeBatery": {
+    "en": "collection",
+    "es": "importado",
+    "pt": "coleção"
+  },
+  "machineWash": {
+    "en": "machine wash",
+    "es": "importado",
+    "pt": "máquina de lavar"
   }
 }

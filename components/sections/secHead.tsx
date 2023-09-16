@@ -361,7 +361,7 @@ function SecHead({
                   />
                   <AtButton
                     sentence="l|:Anderson"
-                    href="https://wa.me/5491155802908"
+                    href="https://wa.me/5491155082980"
                     css="!bg-[#0dc143] !border-[#0dc143]"
                   />
                 </div>

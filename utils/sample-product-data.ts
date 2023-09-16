@@ -77,11 +77,14 @@ export const sampleProductData: Product[] = [
     description:
       "Comfortable, casual, and loose-fitting, our heavyweight dark color t-shirt will quickly become one of your favorites. Made from 100% cotton, it wears well on anyone. We’ve double-needle stitched the bottom and sleeve hems for extra durability. Select a design from our marketplace or customize it to make it uniquely yours!",
     categories: [],
-    labels: ["gi|GiFlatPlatform|name|desc"],
+    labels: [
+      "gi|GiFlatPlatform|100Cotton|100Cotton",
+      "gi|GiFlatPlatform|comfortable|comfortable",
+    ],
     colors: ["black"],
     sizes: ["s", "m", "l", "lx"],
     features: [
-      "95% Cotton, 5% Spandex|a|aa",
+      "cotton|100%|aa",
       "Imported|b|bb",
       "Pull On closure|c|cc",
       "Machine Wash|d|dd",

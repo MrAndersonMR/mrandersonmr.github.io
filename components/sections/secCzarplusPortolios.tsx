@@ -1959,7 +1959,7 @@ function SecCzarplusPortolios() {
                 </div>
                 <AtText
                   type="legend"
-                  sentence="l|:<<< mira la página oficial de CZAR+ | hacemos páginas web, e-commerce y aplicaciones - temos data center próprio - precios accesibles - hospedamos tu pagina en días | podes pagar en hasta 3 cuotas"
+                  sentence="l|:<<< mira la página oficial de CZAR+ | hacemos páginas web, e-commerce y aplicaciones - tenemos data center próprio - precios asequibles - hospedamos tu página en días | puedes pagar en hasta 3 cuotas"
                   css="text-3xl ml-4 capitalize text-center"
                 />
               </div>
@@ -2023,7 +2023,7 @@ function SecCzarplusPortolios() {
               </div>
               <AtText
                 type="legend"
-                sentence="l|:<<< mira la página oficial de CZAR+ | hacemos páginas web, e-commerce y aplicaciones - temos data center próprio - precios accesibles - hospedamos tu pagina en días | podes pagar en hasta 3 cuotas"
+                sentence="l|:<<< mira la página oficial de CZAR+ | hacemos páginas web, e-commerce y aplicaciones - tenemos data center próprio - precios asequibles - hospedamos tu página en días | puedes pagar en hasta 3 cuotas"
                 css="text-3xl ml-4 capitalize text-center"
               />
             </div>
