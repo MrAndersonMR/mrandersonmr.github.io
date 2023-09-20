@@ -258,7 +258,7 @@ function AtCard({
                   <SecBoard
                     type="sm"
                     title={it.split("|")[2]}
-                    text={"l|:" + it.split("|")[3]}
+                    text={it.split("|")[3]}
                     iconType={it.split("|")[0]}
                     icon={it.split("|")[1]}
                     iconSize="36px"

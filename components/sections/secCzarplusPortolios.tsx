@@ -38,7 +38,7 @@ const millcayacTheme: ThemeStyle = {
     linksActions: ["lmb|:messageNoLogged"],
   },
   layouts: {
-    base: ["navbar", "head", "filter", "list", "footer"],
+    base: ["navbar", "head", "filter", "grid", "footer"],
     navbar: {
       placement: undefined,
       iconsName: undefined,
@@ -274,7 +274,7 @@ const drDogoTheme: ThemeStyle = {
     linksActions: ["lmb|:messageNoLogged"],
   },
   layouts: {
-    base: ["navbar", "head", "list"],
+    base: ["navbar", "head", "grid"],
     navbar: {
       placement: undefined,
       iconsName: undefined,
@@ -498,7 +498,7 @@ const madeInSanTelmoTheme: ThemeStyle = {
     linksActions: ["lmb|:messageNoLogged"],
   },
   layouts: {
-    base: ["navbar", "head", "list"],
+    base: ["navbar", "head", "grid"],
     navbar: {
       placement: undefined,
       iconsName: undefined,
@@ -766,7 +766,7 @@ const trebol4hojasTheme: ThemeStyle = {
       radius: "diagonal",
       decoration: "",
       animation: "",
-      url: "https://images.unsplash.com/photo-1601106315698-ee39716dd442?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+      url: "https://images.unsplash.com/photo-1547489432-cf93fa6c71ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
     },
     navbar: {
       shadow: "",
@@ -809,7 +809,7 @@ const trebol4hojasTheme: ThemeStyle = {
     main: {
       font: "'Libre_Bodoni'",
       size: "6xl",
-      color: [],
+      color: ["slate-500", "green-500"],
       animation: "",
       shadow: "",
       decoration: "",
@@ -817,7 +817,7 @@ const trebol4hojasTheme: ThemeStyle = {
     secondary: {
       font: "'Petit_Formal_Script'",
       size: "4xl",
-      color: [],
+      color: ["green-500", "white"],
       animation: "",
       shadow: "",
       decoration: "",
@@ -1191,7 +1191,7 @@ const hostelSdETheme: ThemeStyle = {
     linksActions: ["lmb|:messageNoLogged"],
   },
   layouts: {
-    base: ["navbar", "head", "list"],
+    base: ["navbar", "head", "grid"],
     navbar: {
       placement: undefined,
       iconsName: undefined,
@@ -1421,7 +1421,7 @@ const vienaInstituteTheme: ThemeStyle = {
     linksActions: ["lmb|:messageNoLogged"],
   },
   layouts: {
-    base: ["navbar", "head", "list"],
+    base: ["navbar", "head", "grid"],
     navbar: {
       placement: undefined,
       iconsName: undefined,

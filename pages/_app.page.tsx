@@ -35,7 +35,7 @@ function loadTailwind() {
       <span className="drop-shadow-md drop-shadow-xl drop-shadow-2xl drop-shadow-none">
         3
       </span>
-      <span className="text-transparent text-black text-white text-slate-500 text-gray-500 text-zinc-500 text-neutral-500 text-stone-500 text-red-500 text-orange-500 text-amber-500 text-yellow-500 text-lime-500 text-green-500 text-esmerald-500 text-teal-500 text-cyan-500 text-sky-500 text-blue-500 text-indigo-500 text-violet-500 text-purple-500 text-fuchsia-500 text-pink-500 text-rose-500">
+      <span className="text-transparent text-black text-white text-slate-500 text-gray-500 text-zinc-500 text-neutral-500 text-stone-500 text-red-500 text-orange-500 text-amber-500 text-yellow-500 text-lime-500 text-green-500 text-emerald-500 text-teal-500 text-cyan-500 text-sky-500 text-blue-500 text-indigo-500 text-violet-500 text-purple-500 text-fuchsia-500 text-pink-500 text-rose-500">
         4
       </span>
       <span className="bg-gradient-to-t from-slate-400 to-slate-600 bg-gradient-to-t from-gray-400 to-gray-600 bg-gradient-to-t from-zinc-400 to-zinc-600 bg-gradient-to-t from-neutral-400 to-neutral-600 bg-gradient-to-t from-stone-400 to-stone-600 bg-gradient-to-t from-red-400 to-red-600 bg-gradient-to-t from-orange-400 to-orange-600 bg-gradient-to-t from-amber-400 to-amber-600 bg-gradient-to-t from-yellow-400 to-yellow-600 bg-gradient-to-t from-lime-400 to-lime-600 bg-gradient-to-t from-green-400 to-green-600 bg-gradient-to-t from-esmerald-400 to-esmerald-600 bg-gradient-to-t from-teal-400 to-teal-600 bg-gradient-to-t from-cyan-400 to-cyan-600 bg-gradient-to-t from-sky-400 to-sky-600 bg-gradient-to-t from-blue-400 to-blue-600 bg-gradient-to-t from-indigo-400 to-indigo-600 bg-gradient-to-t from-violet-400 to-violet-600 bg-gradient-to-t from-purple-400 to-purple-600 bg-gradient-to-t from-fuchsia-400 to-fuchsia-600 bg-gradient-to-t from-pink-400 to-pink-600 bg-gradient-to-t from-rose-400 to-rose-600 bg-gradient-to-t from-slate-100 to-slate-600 bg-gradient-to-t from-slate-900 to-slate-600">
@@ -88,6 +88,7 @@ function loadImages() {
       <div className="bg-[url('https://images.unsplash.com/photo-1620278596990-fdf04885f5b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80')]"></div>
       <div className="bg-[url('https://images.unsplash.com/photo-1620706857370-e1b9770e8bb1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80')]"></div>
       <div className="bg-[url('https://images.unsplash.com/photo-1547499417-61a435d27cb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80')]"></div>
+      <div className="bg-[url('https://images.unsplash.com/photo-1547489432-cf93fa6c71ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')]"></div>
     </div>
   );
 }

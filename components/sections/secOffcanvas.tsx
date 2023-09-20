@@ -62,6 +62,10 @@ function SecOffcanvas({
       setRegister(true);
       // alert("Email Registrado");
       localStorage.setItem("users", JSON.stringify(usersAX));
+      setName("");
+      setEmail("");
+      setPassword("");
+      setLogin(true);
     } else setRegistered(true); //alert("Email já cadastrado");
     // setRender(!render);
   };

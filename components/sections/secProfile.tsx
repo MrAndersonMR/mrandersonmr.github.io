@@ -594,7 +594,11 @@ function SecProfile({ user }: { user: User }) {
         <>
           <Row>
             <Col>
-              <AtText type="title" sentence={"personalData"} css="mb-2" />
+              <AtText
+                type="title"
+                sentence={"personalData"}
+                css="mb-2 !text-3xl"
+              />
               <Row>
                 <Col>
                   <AtText type="legend" sentence={"personalId"} css="mb-1" />
@@ -715,7 +719,11 @@ function SecProfile({ user }: { user: User }) {
               )}
               <Row>
                 <Col>
-                  <AtText type="title" sentence={"myCart"} css="mb-2" />
+                  <AtText
+                    type="title"
+                    sentence={"myCart"}
+                    css="mb-2 !text-3xl"
+                  />
                   {user.cartList.map((item, i) => {
                     return (
                       <div key={i}>
@@ -728,7 +736,11 @@ function SecProfile({ user }: { user: User }) {
                   })}
                 </Col>
                 <Col>
-                  <AtText type="title" sentence={"myFavorites"} css="mb-2" />
+                  <AtText
+                    type="title"
+                    sentence={"myFavorites"}
+                    css="mb-2 !text-3xl"
+                  />
                   {products ? (
                     products.map((e, i) => {
                       if (user.fav)
@@ -758,8 +770,16 @@ function SecProfile({ user }: { user: User }) {
                     return (
                       <div key={i}>
                         <div className="flex mt-6 mb-2 gap-2">
-                          <AtText type="title" sentence={"purchase"} />
-                          <AtText type="title" sentence={"l|:" + (i + 1)} />
+                          <AtText
+                            type="title"
+                            sentence={"purchase"}
+                            css="!text-3xl"
+                          />
+                          <AtText
+                            type="title"
+                            sentence={"l|:" + (i + 1)}
+                            css="!text-3xl"
+                          />
                         </div>
                         {e.purchase && e.purchase.products ? (
                           e.purchase.products.map((f, j) => {
@@ -1064,7 +1084,7 @@ function SecProfile({ user }: { user: User }) {
                 <AtText
                   type="title"
                   sentence={["l|:", user.name].join(" ")}
-                  css="my-1"
+                  css="my-1 !text-3xl"
                 />
                 <AtText type="text" sentence={["l|:", user.email].join(" ")} />
               </div>

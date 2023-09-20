@@ -470,7 +470,7 @@ function SecNavbar({
       >
         {/* <div className="w-[3px] h-[3px]"></div> */}
         {/* {JSON.stringify( */}
-        {user ? (
+        {user && user.token ? (
           <AtText
             type="legend"
             css="!text-[.5rem]"

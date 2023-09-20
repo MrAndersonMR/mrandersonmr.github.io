@@ -10,7 +10,13 @@ import {
 import Icon from "../icon/icon";
 import AtForm from "../atoms/atForm";
 
-function SecFilter({ type = undefined }: { type?: string }) {
+function SecFilter({
+  type = undefined,
+  setFilter = undefined,
+}: {
+  type?: string;
+  setFilter?: any;
+}) {
   const [minShow, setMinShow] = useState(false);
   const handleMinClose = () => {
     setMinShow(false);
@@ -34,6 +40,7 @@ function SecFilter({ type = undefined }: { type?: string }) {
 
   const minTarget = useRef(null);
   const maxTarget = useRef(null);
+  const [filterEX, setFilterEX] = useState("");
 
   return (
     <>
@@ -44,7 +51,12 @@ function SecFilter({ type = undefined }: { type?: string }) {
               level="main"
               placeholder="search"
               iconName={["filter"]}
-              click={[() => {}]}
+              change={(e) => setFilterEX(e.target.value)}
+              click={[
+                () => {
+                  setFilter(filterEX);
+                },
+              ]}
             />
             {/* <Form className="w-full">
               <Form.Group

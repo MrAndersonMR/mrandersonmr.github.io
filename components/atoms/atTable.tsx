@@ -9,23 +9,29 @@ import AtButton from "./atButton";
 import AtText from "./atText";
 import { ThemeStyleContext } from "../../context/themeStyleContext";
 import { styleTheme } from "../config/stylesConfig";
+import AtImage from "./atImage";
+import { monetaryFormat } from "../config/formatConfig";
 
 function AtTable({
   item = undefined,
   title = undefined,
+  list = undefined,
   headers = [],
   type = "feature",
   click = undefined,
   css = undefined,
   variant = "light",
+  owner = "",
 }: {
   item?: any;
   title?: string;
+  list?: any;
   headers?: string[];
-  type?: "feature" | "comment";
+  type?: "content" | "feature" | "comment";
   click?: any;
   css?: string;
   variant?: string;
+  owner?: string;
 }) {
   // const language = useLanguage();
   // const [language, setLanguage] = useContext(LanguageContext);
@@ -34,6 +40,31 @@ function AtTable({
 
   function typeFormat() {
     const values = {
+      content: (
+        <tbody>
+          {list &&
+            list
+              .filter((e) => e.owners.includes(owner))
+              .map((e, i) => {
+                return (
+                  <tr key={i}>
+                    <td className="!bg-transparent border-0 !text-center !flex !justify-center">
+                      <AtImage width={40} height={40} src={[e.urls[0]]} />
+                    </td>
+                    <td className="!bg-transparent border-0 !text-center">
+                      <AtText sentence={"l|:" + e.name} />
+                    </td>
+                    <td className="!bg-transparent border-0 !text-center">
+                      <AtText
+                        type="subtitle"
+                        sentence={"l|:" + monetaryFormat(e.price)}
+                      />
+                    </td>
+                  </tr>
+                );
+              })}
+        </tbody>
+      ),
       feature: (
         <tbody>
           {item &&

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Layout from "../components/Layout";
-import React, { Component, useContext } from "react";
+import React, { Component, useContext, useState } from "react";
 import SecHead from "../components/sections/secHead";
 import SecBlock from "../components/sections/secBlock";
 import SecFilter from "../components/sections/secFilter";
@@ -11,6 +11,7 @@ import { sampleProductData } from "../utils/sample-product-data";
 import { GetStaticProps } from "next";
 import PgInfo from "../components/sections/pgInfo";
 import { ThemeStyleContext } from "../context/themeStyleContext";
+import AtTable from "../components/atoms/atTable";
 
 type Props = {
   items: Product[];
@@ -24,6 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
 function IndexPage({ items }: Props) {
   // <Layout title="Home | Next.js + TypeScript Example">
   const [themeStyle, setThemeStyle] = useContext(ThemeStyleContext);
+  const [filter, setFilter] = useState("");
 
   return (
     <>
@@ -37,7 +39,7 @@ function IndexPage({ items }: Props) {
         <></>
       )}
       {themeStyle.layouts && themeStyle.layouts.base.includes("filter") ? (
-        <SecFilter />
+        <SecFilter setFilter={setFilter} />
       ) : (
         <></>
       )}
@@ -52,7 +54,21 @@ function IndexPage({ items }: Props) {
       <SecFilter />
     </SecLayoutPage> */}
       {themeStyle.layouts && themeStyle.layouts.base.includes("list") ? (
-        <SecGrid list={items} filter={themeStyle.definitions.grid.filter} />
+        <AtTable
+          type={"content"}
+          headers={["image", "name", "price"]}
+          list={items}
+          owner={themeStyle.definitions.grid.filter}
+        />
+      ) : (
+        <></>
+      )}
+      {themeStyle.layouts && themeStyle.layouts.base.includes("grid") ? (
+        <SecGrid
+          list={items}
+          owner={themeStyle.definitions.grid.filter}
+          filter={filter}
+        />
       ) : (
         <></>
       )}

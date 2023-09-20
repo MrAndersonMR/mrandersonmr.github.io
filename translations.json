@@ -486,13 +486,13 @@
   },
   "cotton": {
     "en": "cotton",
-    "es": "cotton",
-    "pt": "alguodão"
+    "es": "algodón",
+    "pt": "algodão"
   },
   "spandex": {
     "en": "spandex",
-    "es": "cotton",
-    "pt": "cotton"
+    "es": "spandex",
+    "pt": "spandex"
   },
   "100Cotton": {
     "en": "100% cotton",
@@ -521,7 +521,7 @@
   },
   "light": {
     "en": "light",
-    "es": "muchos estilos",
+    "es": "leviana",
     "pt": "leve"
   },
   "30discount": {
@@ -536,7 +536,7 @@
   },
   "collection": {
     "en": "collection",
-    "es": "importado",
+    "es": "colección",
     "pt": "coleção"
   },
   "highVitamins": {
@@ -633,5 +633,15 @@
     "en": "machine wash",
     "es": "importado",
     "pt": "máquina de lavar"
+  },
+  "image": {
+    "en": "image",
+    "es": "imagen",
+    "pt": "imagem"
+  },
+  "price": {
+    "en": "price",
+    "es": "precio",
+    "pt": "preço"
   }
 }

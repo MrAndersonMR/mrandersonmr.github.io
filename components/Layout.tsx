@@ -12,7 +12,7 @@ type Props = {
   title?: string;
 };
 
-function Layout({ children, title = "This is the default title" }: Props) {
+function Layout({ children, title = "CZAR+ Portfolio" }: Props) {
   const [themeStyle, setThemeStyle] = useContext(ThemeStyleContext);
 
   return (

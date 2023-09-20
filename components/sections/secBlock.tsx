@@ -602,9 +602,20 @@ function SecBlock({
               />
               <Card.Body className="flex items-end justify-end">
                 <div className="flex flex-col items-end justify-end mr-3">
-                  <Card.Text>VISA</Card.Text>
-                  <Card.Text>Anderson Mendes</Card.Text>
-                  <Card.Title className="tracking-widest">**** 3028</Card.Title>
+                  <Card.Text>
+                    <AtText type="legend" sentence={"l|:VISA"} />
+                  </Card.Text>
+                  <Card.Text>
+                    <AtText
+                      type="subtitle"
+                      sentence={"l|:" + (user && user.name ? user.name : "")}
+                    />
+                  </Card.Text>
+                  <Card.Title className="tracking-widest">
+                    <AtText
+                      sentence={"l|:" + (user && user.card ? user.card : "")}
+                    />
+                  </Card.Title>
                 </div>
                 <div>
                   <Button className="p-1 !rounded-full">

@@ -4,7 +4,15 @@ import SecBlock from "./secBlock";
 import { Product } from "../../interfaces";
 import { sampleProductData } from "../../utils/sample-product-data";
 
-function SecGrid({ list, filter }: { list: Product[]; filter: string }) {
+function SecGrid({
+  list,
+  filter,
+  owner,
+}: {
+  list: Product[];
+  filter: string;
+  owner: string;
+}) {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -32,7 +40,8 @@ function SecGrid({ list, filter }: { list: Product[]; filter: string }) {
           {products
             .sort((a, b) => (Number(a.id) > Number(b.id) ? 1 : -1))
             // .filter((e) => e.name !== "")
-            .filter((e) => e.owners.includes(filter))
+            .filter((e) => e.owners.includes(owner))
+            .filter((e) => e.name.toLowerCase().includes(filter.toLowerCase()))
             .map((item, i) => {
               return (
                 <Col key={i} md={4} className="flex justify-center">

@@ -102,6 +102,12 @@ function AtForm({
                 ? labelFormat(placeholder) // <AtText type="sentence" sentence={placeholder} />
                 : labelFormat("blankSpace") // <AtText type="sentence" sentence={"blankSpace"} />
             }
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                // alert(JSON.stringify(click));
+              }
+            }}
             value={value}
             onChange={change}
           />
